@@ -1,10 +1,12 @@
+<p id="notice"><%= notice %></p>
 
 <div class="jumbotron">
-  <h1 class="display-4"><%= @employee.first_name %><%= @employee.last_name %></h1>
-  <p class="lead"><%= @employee.position %></p>
+  <h1 class="display-4"><%= @product.productname %></h1>
   <hr class="my-4">
-  <p><%= @employee.department %> | <%= @employee.university %></p>
+  <p>$<%= @product.productprice %></p>
+  <p>$<%= @product.discount %>% OFF</p>
 </div>
 
-<%= link_to 'Edit', edit_employee_path(@employee), class:"btn btn-dark" %> |
-<%= link_to 'Back', employees_path, class:"btn btn-secondary" %>
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary"%>  
+<%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+

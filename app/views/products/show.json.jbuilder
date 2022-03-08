@@ -1,1 +1,1 @@
-json.partial! "employees/employee", employee: @employee
+json.partial! "products/product", product: @product

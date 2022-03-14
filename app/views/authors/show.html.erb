@@ -1,0 +1,8 @@
+<p><strong>First Name:</strong><%= @author.first_name %></p>
+<p><strong>Last Name:</strong><%= @author.last_name %></p>
+<p><strong>Date:</strong><%= @author.dob %></p>
+<p><strong>Email:</strong><%= @author.email %></p>
+
+<%= link_to "Edit", edit_author_path(@author) %> |
+<%= button_to "Delete", author_path(@author), method: :delete, data: {confirm: "Are you sure?"} %> |
+<%= link_to "Return to Author Listing", authors_path %>

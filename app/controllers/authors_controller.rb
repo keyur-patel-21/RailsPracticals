@@ -1,4 +1,4 @@
-class AuthorsController < ActionController::Base
+class AuthorsController < ApplicationController
 
 	def index
 		@authors = Author.all

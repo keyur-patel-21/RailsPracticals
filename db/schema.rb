@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_14_112957) do
+ActiveRecord::Schema.define(version: 2022_03_15_085412) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -19,7 +19,24 @@ ActiveRecord::Schema.define(version: 2022_03_14_112957) do
     t.string "email"
   end
 
-# Could not dump table "books" because of following StandardError
-#   Unknown type 'author_id' for column 'user_id'
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "book_id", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "author_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "book_id"
+    t.index ["author_id"], name: "index_images_on_author_id"
+    t.index ["book_id"], name: "index_images_on_book_id"
+  end
 
 end

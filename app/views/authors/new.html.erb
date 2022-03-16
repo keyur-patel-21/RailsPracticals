@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Create a new Author</h1>
+
+  <% if @author.errors.any? %>
+    <h2> The following error(s) prevented the author from being saved </h2>
+    <ul>
+      <% @author.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :author, url:authors_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name	 %>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :Birth_Date %>
+      <%= f.date_select :dob, :start_year=>1900 %>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div><br>
+
+    <p>
+      <%= f.submit %>
+    </p>
+    
+  <% end %>
+
+  <%= link_to "Return to Author Listing", authors_path, class:"btn btn-info" %>
+</div>

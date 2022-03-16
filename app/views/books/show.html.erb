@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @book.name %></h1>
+    <p class="lead">Price :$<%= @book.price %></p>
+    <hr class="my-4">
+  
+    <%= link_to "Edit", edit_book_path(@book), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", book_path(@book), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Author Listing", books_path, class:"btn btn-info" %>
+  </div>
+</div>

@@ -23,8 +23,8 @@
     </p>
 
       <p>
-          <%= f.label :author%>
-          <%= f.select :author_id, Author.all.map { |t| [t.first_name+ " " +t.last_name, t.id]}%>
+        <%= f.label :author%>
+        <%= f.select :author_id, Author.all.map { |t| [t.first_name+ " " +t.last_name, t.id]}%>
       </p>
 
     <p>

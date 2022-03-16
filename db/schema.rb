@@ -33,10 +33,9 @@ ActiveRecord::Schema.define(version: 2022_03_15_085412) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "author_id"
-    t.integer "book_id"
-    t.index ["author_id"], name: "index_images_on_author_id"
-    t.index ["book_id"], name: "index_images_on_book_id"
+    t.bigint "imageable_id"
+    t.string "imageable_type"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
 end

@@ -1,13 +1,13 @@
 <div class="container">
-		<div class="jumbotron">
-  	<h1 class="display-4"><%= @author.first_name + " " + @author.last_name%></h1>
-  	<p class="lead">Born: <%= @author.dob  %></p>
-		<p class="lead">Mail: <%= @author.email  %></p>
-  	<hr class="my-4">
+    <div class="jumbotron">
+    <h1 class="display-4"><%= @author.first_name + " " + @author.last_name%></h1>
+    <p class="lead">Born: <%= @author.dob  %></p>
+    <p class="lead">Mail: <%= @author.email  %></p>
+    <hr class="my-4">
   
-		<%= link_to "Edit", edit_author_path(@author), class:"btn btn-primary" %> <br> <br>
-		<%= button_to "Delete", author_path(@author), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-secondary" %> <br>
-		<%= link_to "Return to Author Listing", authors_path, class:"btn btn-info" %>
-	</div>
+    <%= link_to "Edit", edit_author_path(@author), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", author_path(@author), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-secondary" %> <br>
+    <%= link_to "Return to Author Listing", authors_path, class:"btn btn-info" %>
+  </div>
   
 </div>

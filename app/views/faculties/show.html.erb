@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @faculty.f_firstname + " " + @faculty.f_lastname %></h1>
+    <h2 class="lead">Designation :  <%= @faculty.f_designation %></h2>
+    <hr class="my-4">
+    <p class="lead">Date of Birth :$<%= @faculty.f_dob %></p>
+    <p class="lead">Phone :  <%= @faculty.f_phone %></p>
+    <p class="lead">Email :  <%= @faculty.f_email %></p>
+
+    <%= link_to "Edit", edit_faculty_path(@faculty), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", faculty_path(@faculty), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Faculty Listing", faculties_path, class:"btn btn-info" %>
+  </div>
+</div>

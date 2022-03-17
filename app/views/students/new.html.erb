@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Create a new Student</h1>
+
+  <% if @student.errors.any? %>
+    <h2> The following error(s) prevented the Book from being saved </h2>
+    <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :student, url:students_path, local: true do |f| %>  
+    
+    <div class="field form-group">
+      <%= f.text_field :s_firstname, class:"form-control", placeholder:"First Name" %>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :s_lastname, class:"form-control", placeholder:"Last Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :Date_of_Birth %>
+      <%= f.date_select :s_dob, class:"form-control", placeholder:"Date of Birth"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :s_department, class:"form-control", placeholder:"Department"%>
+    </div><br>
+
+    <p>
+      <%= f.check_box :s_terms%>
+      <%= f.label :Accept_Tearms_and_conditions %>
+    </p><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Faculties Listing", students_path, class:"btn btn-info" %>
+<div>

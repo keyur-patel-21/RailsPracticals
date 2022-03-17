@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get "pages/about"
 
-  resources :students
+  resources :books
   resources :authors
+
+  resources :students
+  resources :faculties
 end

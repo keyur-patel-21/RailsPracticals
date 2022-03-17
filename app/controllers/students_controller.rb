@@ -8,8 +8,9 @@ class StudentsController < ApplicationController
   end
   
   def create
-    @student = Student.new(params.require(:student).permit(:s_firstname, :s_lastname, :s_dob, :s_department, :s_terms))
-    if @student.save
+    @student = Student.new(params.require(:student).permit(:s_firstname, :s_lastname,:s_dob, :s_department, :s_terms))
+    @student.s_department = (params.require(:student).permit(:s_firstname, :s_lastname,:s_dob, :s_department, :s_terms))[:s_department].upcase
+    if @student.save  
       flash[:notice] = "Student was created successfully"
       redirect_to @student
     else
@@ -22,12 +23,12 @@ class StudentsController < ApplicationController
   end
   
   def update
-    @student = Student.update(params.require(:student).permit(:s_firstname, :s_lastname, :s_dob, :s_department, :s_terms))
-    if @student.save
-      flash[:notice] = "Student was created successfully"
+    @student = Student.find(params[:id])
+    if @student.update(params.require(:student).permit(:s_firstname, :s_lastname, :s_dob, :s_department, :s_terms))
+      flash[:notice] = "Student was updated Successfully."
       redirect_to @student
     else
-      render "new"
+      render "edit"
     end
   end
   

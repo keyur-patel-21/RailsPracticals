@@ -6,15 +6,9 @@ class Faculty < ApplicationRecord
     message: "Faculty can not be %{value}" }, inclusion: { in: %w(Ass.Prof. Prof.), message: "Invalid faculty designation" }
   validate :birthdate_cannot_be_in_future
 
-
   def birthdate_cannot_be_in_future
     if f_dob.present? && f_dob >= Date.today
       errors.add(:f_dob, "can't be in the past")
     end
-  end
-  
-  
-
-   
+  end  
 end
-

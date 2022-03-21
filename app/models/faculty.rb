@@ -8,7 +8,7 @@ class Faculty < ApplicationRecord
 
   def birthdate_cannot_be_in_future
     if f_dob.present? && f_dob >= Date.today
-      errors.add(:f_dob, "can't be in the past")
+      errors.add(:f_dob, "can't be in the future.")
     end
   end  
 end

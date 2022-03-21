@@ -1,6 +1,6 @@
 class Faculty < ApplicationRecord
   validates :f_firstname, :f_lastname, :f_phone, :f_email, :f_dob, :f_designation, presence: true
-  validates :f_phone, length: { minimum: 10 }, numericality: { only_integer: true } 
+  validates :f_phone, length: { is: 10 }, numericality: { only_integer: true } 
   validates :f_email, uniqueness: true
   validates :f_designation, exclusion: { in: %w(HOD Sr.Prof),
     message: "Faculty can not be %{value}" }, inclusion: { in: %w(Ass.Prof. Prof.), message: "Invalid faculty designation" }

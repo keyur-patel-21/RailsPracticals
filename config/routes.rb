@@ -3,10 +3,9 @@ active-record-migrations
   root "pages#home"
   get "pages/about"
 
-  resources :authors
   resources :books
+  resources :authors
 
-  resources :products
-  get 'home/index'
-  get "home/about"
+  resources :students
+  resources :faculties
 end

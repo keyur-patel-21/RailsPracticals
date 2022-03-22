@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @student.s_firstname + " " + @student.s_lastname %></h1>
+    <h2 class="lead">Department :  <%= @student.s_department %></h2>
+    <hr class="my-4">
+    <p class="lead">Date of Birth :  <%= @student.s_dob %></p>
+
+    <%= link_to "Edit", edit_student_path(@student), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", student_path(@student), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Faculty Listing", students_path, class:"btn btn-info" %>
+  </div>
+</div>

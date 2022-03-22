@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Students</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Department</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student|%>
+      <tr>
+        <td><%= student.s_firstname + " " + student.s_lastname%></td>
+        <td><%= student.s_dob%></td>
+        <td><%= student.s_department%></td>
+        <td><%= link_to "Show", student_path(student)%></td>
+        <td><%= link_to "Edit", edit_student_path(student)%></td>
+        <td><%= button_to "Delete", student_path(student), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new Student", new_student_path, class:"btn btn-primary" %></p>
+</div>
+  

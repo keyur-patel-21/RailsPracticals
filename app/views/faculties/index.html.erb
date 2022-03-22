@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Our Faculties</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Date of Birth</th>
+        <th>Designation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @faculties.each do |faculty|%>
+      <tr>
+        <td><%= faculty.f_firstname + " " + faculty.f_lastname%></td>
+        <td><%= faculty.f_phone%></td>
+        <td><%= faculty.f_email%></td>
+        <td><%= faculty.f_dob%></td>
+        <td><%= faculty.f_designation%></td>
+        <td><%= link_to "Show", faculty_path(faculty)%></td>
+        <td><%= link_to "Edit", edit_faculty_path(faculty)%></td>
+        <td><%= button_to "Delete", faculty_path(faculty), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new Faculty", new_faculty_path, class:"btn btn-primary" %></p>
+</div>
+  

@@ -10,8 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2022_03_16_111803) do
+=======
 
 ActiveRecord::Schema.define(version: 2022_03_15_085322) do
+>>>>>>> 45b4a50fb13ce9a84ec733f844e07f1b5d1fb283
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -34,28 +38,31 @@ ActiveRecord::Schema.define(version: 2022_03_15_085322) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "faculties", force: :cascade do |t|
+    t.string "f_firstname"
+    t.string "f_lastname"
+    t.integer "f_phone"
+    t.string "f_email"
+    t.date "f_dob"
+    t.string "f_designation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.integer "imageable_id"
     t.string "imageable_type"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
-
-  create_table "employees", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "position"
-    t.string "department"
-    t.string "university"
+  create_table "students", force: :cascade do |t|
+    t.string "s_firstname"
+    t.string "s_lastname"
+    t.date "s_dob"
+    t.string "s_department"
+    t.string "s_terms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "productname"
-    t.string "productprice"
-    t.string "discount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 end

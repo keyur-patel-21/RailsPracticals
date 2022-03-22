@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Create a new Faculty</h1>
+
+  <% if @faculty.errors.any? %>
+    <h2> The following error(s) prevented the Book from being saved </h2>
+    <ul>
+      <% @faculty.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model: @faculty,local: true) do |f| %>  
+    
+    <div class="field form-group">
+      <%= f.text_field :f_firstname, class:"form-control", placeholder:"First Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :f_lastname, class:"form-control", placeholder:"Last Name" %>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :f_phone, class:"form-control", placeholder:"Phone Number"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :f_email, class:"form-control", placeholder:"Email"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :Date_of_Birth%>
+      <%= f.date_select :f_dob, :start_year=>1900, class:"form-control", placeholder:"Date of Birth"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :f_designation, class:"form-control", placeholder:"Designation"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Faculties Listing", faculties_path, class:"btn btn-info" %>
+<div>

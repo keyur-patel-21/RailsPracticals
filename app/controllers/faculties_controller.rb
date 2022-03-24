@@ -1,4 +1,5 @@
 class FacultiesController < ApplicationController
+  
   def index
     @faculties = Faculty.all
   end
@@ -11,7 +12,7 @@ class FacultiesController < ApplicationController
     @faculty = Faculty.new(params.require(:faculty).permit(:f_firstname, :f_lastname, :f_phone, :f_email, :f_dob, :f_designation))
     if @faculty.save
       flash[:notice] = "Faculty was created successfully"
-      redirect_to @faculty
+      redirect_to faculty_path(@faculty)
     else
       render "new"
     end
@@ -25,7 +26,7 @@ class FacultiesController < ApplicationController
     @faculty = Faculty.find(params[:id])
     if @faculty = Faculty.update(params.require(:faculty).permit(:f_firstname, :f_lastname, :f_phone, :f_email, :f_dob, :f_designation))
       flash[:notice] = "Faculty was updated Successfully."
-      redirect_to @faculty
+      redirect_to faculty_path
     else
       render "edit"
     end

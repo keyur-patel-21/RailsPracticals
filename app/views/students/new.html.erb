@@ -22,7 +22,7 @@
 
     <div class="field form-group">
       <%= f.label :Date_of_Birth %>
-      <%= f.date_select :s_dob, class:"form-control", placeholder:"Date of Birth"%>
+      <%= f.date_select :s_dob, :start_year=>1900, class:"form-control", placeholder:"Date of Birth"%>
     </div><br>
 
     <div class="field form-group">

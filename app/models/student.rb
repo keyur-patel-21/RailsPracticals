@@ -7,8 +7,7 @@ class Student < ApplicationRecord
   validate :birthdate_cannot_be_in_future
 
   # implemented callbacks 
-  before_validation :check_validation 
-  before_validation :check_dob
+  before_validation :check_validation, :check_dob  
   after_validation :complete_validation
   after_save :complete_save
   before_update :updating
@@ -27,7 +26,7 @@ class Student < ApplicationRecord
 
   # Method taht called when object is touched.
   after_touch do
-    puts '----An Employee was touched----'
+    puts '----An Student was touched----'
   end
 
   private

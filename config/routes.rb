@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :students
   resources :faculties
-
+  
+  get "employees/search"
+  get 'employees/results'
   resources :employees
+  
 end

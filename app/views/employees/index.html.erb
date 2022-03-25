@@ -30,5 +30,22 @@
   </table>
 
   <p><%= link_to "Add new Employee", new_employee_path, class:"btn btn-primary" %></p>
-</div>
+</div><br><br>
+
+
+<table>
+  <th>Search Employee:</th>
+  <th>Search</th>
+
+  <%= form_tag employees_path, method: :get do %>
+
+  <tr>
+  <td><%= email_field_tag :search, params[:search] %></td>
+  <td><%= submit_tag "search" %></td>
+  <% end %>
+  </tr>
+
+</table>
+
+
   

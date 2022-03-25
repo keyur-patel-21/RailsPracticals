@@ -9,7 +9,7 @@ class EmployeesController < ApplicationController
   end
   
   def create
-    @employee = Employee.new(params.require(:employee).permit(:firstname, :lastname, :email, :age, :no_of_order, :full_time_available, :salary))
+    @employee = Employee.find_or_initialize_by(params.require(:employee).permit(:firstname, :lastname, :email, :age, :no_of_order, :full_time_available, :salary))
     if @employee.save
       flash[:notice] = "Employee was created Successfully"
       redirect_to employee_path(@employee)
@@ -41,5 +41,13 @@ class EmployeesController < ApplicationController
     if @employee.destroy
       redirect_to employees_path
     end
+  end
+
+  def search
+    @employees = Employee.search_email_display_all(params[:search])
+  end
+
+  def results
+    
   end
 end

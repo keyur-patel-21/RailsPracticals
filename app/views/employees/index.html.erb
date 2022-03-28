@@ -1,5 +1,16 @@
 <div class="container">
+  <h2> Search employees by email... </h2>
+  <form class="d-flex" action="/search">
+    <input class="form-control me-2" name = "q" type="search" placeholder="Enter Employee's Email" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div><br><br>
+
+<div class="container">
   <h1>Our Employees</h1>
+
+  <%= button_to 'Increase order of first 10 Employees', increaseOrder_path, method: :post, class:"btn btn-success" %>
+  <%= button_to 'Decrease order of first 10 Employees', decreaseOrder_path, method: :post, class:"btn btn-danger" %>
 
   <table class="table table-hover">
     <thead>
@@ -33,19 +44,6 @@
 </div><br><br>
 
 
-<table>
-  <th>Search Employee:</th>
-  <th>Search</th>
-
-  <%= form_tag employees_path, method: :get do %>
-
-  <tr>
-  <td><%= email_field_tag :search, params[:search] %></td>
-  <td><%= submit_tag "search" %></td>
-  <% end %>
-  </tr>
-
-</table>
 
 
   

@@ -43,11 +43,39 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def search
-    @employees = Employee.search_email_display_all(params[:search])
-  end
-
   def results
     
   end
+
+  def search
+    if params[:q]
+      if Employee.find_by("email = ?",params[:q])
+        @employee = Employee.find_by("email = ?",params[:q])
+        puts "email exist, first record is given"
+      else
+        flash[:notice] = "Entered Email Does not Exist."
+      end    
+    end  
+  end
+  
+  def increaseOrder
+    @temp = Employee.find_in_batches(batch_size: 10)
+    @temp.first.each do |e|
+      e.no_of_order += 1
+      e.save
+    end
+    redirect_to employees_path(@employee)
+  end
+  
+
+  def decreaseOrder
+    @temp = Employee.find_in_batches(batch_size: 10) 
+    @temp.first.each do |e|
+      e.no_of_order -= 1
+      e.save
+    end
+    redirect_to employees_path(@employee)
+  end
+  
+
 end

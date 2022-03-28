@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   resources :students
   resources :faculties
   
-  get "employees/search"
+  get 'search', to:"employees#search"
   get 'employees/results'
+  post '/increaseOrder', to: "employees#increaseOrder"
+  post '/decreaseOrder', to: "employees#decreaseOrder"
   resources :employees
   
 end

@@ -10,18 +10,4 @@ class Employee < ApplicationRecord
     end
   end
 
-  def self.search_email_display_all(search)
-    if search
-      employee = Employee.find_by(email: search)
-      if employee
-        Employee.where(id: employee.id)
-      else
-        Employee.all
-      end
-    else
-      Employee.all
-    end
-  end
-
-  
 end

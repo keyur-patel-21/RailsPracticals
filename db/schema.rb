@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_113550) do
+ActiveRecord::Schema.define(version: 2022_03_29_101950) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2022_03_23_113550) do
     t.datetime "updated_at", null: false
     t.integer "author_id"
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -60,6 +69,27 @@ ActiveRecord::Schema.define(version: 2022_03_23_113550) do
     t.integer "imageable_id"
     t.string "imageable_type"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "total_price"
+    t.integer "product_id"
+    t.string "status"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "price"
+    t.string "capacity"
+    t.string "is_active"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|

@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Customers List</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer|%>
+      <tr>
+        <td><%= customer.firstname + " " + customer.lastname %></td>
+        <td><%= customer.phone%></td>
+        <td><%= customer.email%></td>
+        <td><%= link_to "Show", customer_path(customer)%></td>
+        <td><%= link_to "Edit", edit_customer_path(customer)%></td>
+        <td><%= button_to "Delete", customer_path(customer), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new customer", new_customer_path, class:"btn btn-primary" %></p>
+</div>
+  

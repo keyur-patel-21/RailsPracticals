@@ -1,0 +1,35 @@
+<div class="container">
+<p><%= link_to "Show Products with active Product", products_activeTrue_path, class:"btn btn-primary" %></p>
+  <h1>Products List</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Capacity</th>
+        <th>is Active?</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product|%>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.description%></td>
+        <td><%= product.price%></td>
+        <td><%= product.capacity%></td>
+        <td><%= product.is_active%></td>
+        <td><%= product.status%></td>
+        <td><%= link_to "Show", product_path(product)%></td>
+        <td><%= link_to "Edit", edit_product_path(product)%></td>
+        <td><%= button_to "Delete", product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new Product", new_product_path, class:"btn btn-primary" %></p>
+</div>
+  

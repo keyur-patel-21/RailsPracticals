@@ -67,7 +67,6 @@ class EmployeesController < ApplicationController
     redirect_to employees_path(@employee)
   end
   
-
   def decreaseOrder
     @temp = Employee.find_in_batches(batch_size: 10) 
     @temp.first.each do |e|
@@ -76,6 +75,4 @@ class EmployeesController < ApplicationController
     end
     redirect_to employees_path(@employee)
   end
-  
-
 end

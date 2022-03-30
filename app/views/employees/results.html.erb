@@ -1,6 +1,6 @@
 <%# List employees having age > 20 and < 40  %>
 <div class="container">
-  <h1>(5)Employees having age more than 20 and less than 40</h1>
+  <h1>Employees having age more than 20 and less than 40</h1>
 
   <table class="table table-hover">
     <thead>
@@ -20,7 +20,7 @@
   </table><br><br>
 
   <%#  List employees which are full_time_available %>
-  <h1>(6)Employees available for full time</h1>
+  <h1>Employees available for full time</h1>
 
   <table class="table table-hover">
     <thead>
@@ -40,7 +40,7 @@
   </table><br><br>
 
 <%#  List employees which have exact 5 number of orders and age > 25 %>
-<h1>(7)Employees with 5 orders and more than 25 age.</h1>
+<h1>Employees with 5 orders and more than 25 age.</h1>
 
   <table class="table table-hover">
     <thead>
@@ -61,7 +61,7 @@
   </table><br><br>
 
 <%# List employees which are created before today %>
-<h1>(8)Employees which are created before today.</h1>
+<h1>Employees which are created before today.</h1>
 
   <table class="table table-hover">
     <thead>
@@ -81,7 +81,7 @@
   </table><br><br>
 
   <%# List employees which have exact 5 number of orders Or age < 25 %>
-  <h1>(9)Employees having 5 orders and aged less than 25.</h1>
+  <h1>Employees having 5 orders and aged less than 25.</h1>
 
   <table class="table table-hover">
     <thead>
@@ -103,7 +103,7 @@
   </table><br><br>
 
   <%# List employees in descending order by age %>
-  <h1>(10)Employees in descending order by age</h1>
+  <h1>Employees in descending order by age</h1>
 
   <table class="table table-hover">
     <thead>
@@ -123,7 +123,7 @@
   </table><br><br>
 
   <%# List employees in ascending order by number of order %>
-  <h1>(11)Employees in ascending order by number of order</h1>
+  <h1>Employees in ascending order by number of order</h1>
 
   <table class="table table-hover">
     <thead>
@@ -143,7 +143,7 @@
   </table><br><br>
 
   <%# List employees having salary > 45000 %>
-  <h1>(12)Employees having salary more than 45000</h1>
+  <h1>Employees having salary more than 45000</h1>
 
   <table class="table table-hover">
     <thead>
@@ -164,7 +164,7 @@
   </table><br><br>
 
   <%# Group employees by no_of_order with them and display employees with no_of_order > 5 %>
-  <h1>(13)Group employees by no_of_order with them and display employees with no_of_order > 5</h1>
+  <h1>Group employees by no_of_order with them and display employees with no_of_order > 5</h1>
 
   <table class="table table-hover">
     <thead>
@@ -184,7 +184,7 @@
     </tbody>
   </table><br><br> 
 
-  <h1>(14)Write example for keywords unscope, only, reselect, reorder, reverse_order</h1>
+  <h1>exirWrite example for keywords unscope, only, reselect, reorder, reverse_order</h1>
   <br>
   <h2>Unscope:</h2>
 
@@ -221,6 +221,23 @@
         <td><%= employee.firstname + " " + employee.lastname%></td>
         <td><%= employee.no_of_order%></td>
       </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h2>Reselect:</h2>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.select(:firstname).unscope(:select).select(:lastname).each do |employee| %>
+        <tr>
+          <td><%= employee.lastname%></td>
+        </tr>
       <% end%>
     </tbody>
   </table><br><br>
@@ -263,18 +280,3 @@
     </tbody>
   </table><br><br>
 <div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

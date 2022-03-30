@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Edit Product</h1>
+  <h1>Update Product</h1>
 
   <% if @product.errors.any? %>
     <h2> The following error(s) prevented the Book from being saved </h2>
@@ -10,14 +10,14 @@
     </ul>
   <% end %>
 
-  <%= form_with(model: @product, local: true) do |f| %> 
+  <%= form_with(model: @product,local: true) do |f| %>  
     
     <div class="field form-group">
       <%= f.text_field :title, class:"form-control", placeholder:"Enter Title"%>
     </div><br>
 
     <div class="field form-group">
-      <%= f.text_field :description, class:"form-control", placeholder:"Enter Description" %>
+      <%= f.text_field :description, class:"form-control", placeholder:"Enter Decription" %>
     </div><br>
 
     <div class="field form-group">
@@ -29,13 +29,13 @@
     </div><br>
 
     <div class="field form-group">
-       <%= f.label :is_Order_Active? %>
-      <%= f.select :is_active, ['Yes','No'],class:"form-control"%>
+      <%= f.label :is_Order_Active? %>
+      <%= f.select :is_active, ['Yes','No'], class:"form-control"%>
     </div><br>
 
     <div class="field form-group">
-      <%= f.label :What_is_the_status_of_order? %>
-      <%= f.select :status, ['In Stock', 'Out of stock', 'Coming Soon'], class:"form-control", placeholder:"Enter Capacity"%>
+      <%= f.label :What_is_the_status_of_Stock? %>
+      <%= f.select :status, ['In Stock','Out Of Stock','Coming Soon'], class:"form-control"%>
     </div><br>
 
     <div class="action">
@@ -44,5 +44,7 @@
       
   <% end %>
 
-  <%= link_to "Return to Faculties Listing", products_path, class:"btn btn-info" %>
+  <%= link_to "Return to Product Listing", products_path, class:"btn btn-info" %>
 <div>
+
+

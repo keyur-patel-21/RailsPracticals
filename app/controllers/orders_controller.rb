@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
-    if @order = Order.update(params.require(:order).permit(:quantity, :total_price, :product_id, :status, :customer_id))
+    if @order.update(params.require(:order).permit(:quantity, :total_price, :product_id, :status, :customer_id))
       flash[:notice] = "Order updates Successfully"
       redirect_to  order_path(@order)
     else
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     if @order.destroy
-      redirect_to order_path
+      redirect_to orders_path
     end
   end
 end

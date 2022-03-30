@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
   
   def update
     @customer = Customer.find(params[:id])
-    if @customer = Customer.update(params.require(:customer).permit(:firstname, :lastname, :email, :phone)) 
+    if @customer.update(params.require(:customer).permit(:firstname, :lastname, :email, :phone)) 
       flash[:notice] = "Customer was updated Successfully"
       redirect_to customer_path
     else
@@ -39,7 +39,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     if @customer.destroy
-      redirect_to customer_path
+      redirect_to customers_path
     end
   end
 end

@@ -15,9 +15,10 @@
       <% @orders.each do |order|%>
       <tr>
         <td><%= order.product.title %></td>
-        <td><%= (order.product.quantity)*(order.product.price)%></td>
-        <td><%= order.satus%></td>
-        <td><%= order.customer.first_name + " " + order.customer.lastname%></td>
+        <td><%= order.quantity %></td>
+        <td><%= (order.quantity)*(order.product.price) %></td>
+        <td><%= order.status%></td>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
         
         <td><%= link_to "Show", order_path(order)%></td>
         <td><%= link_to "Edit", edit_order_path(order)%></td>

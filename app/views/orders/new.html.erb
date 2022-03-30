@@ -14,12 +14,17 @@
     
     <p>
       <%= f.label :Select_your_Product%>
-      <%= f.select :product_id, Product.all.map { |t| [t.title]} %>
+      <%= f.select :product_id, Product.all.map { |t| [t.title, t.id]} %>
+    </p>
+
+    <p>
+      <%= f.label :Who_is_the_customer?%>
+      <%= f.select :customer_id, Customer.all.map { |t| [t.firstname + " " + t.lastname, t.id]} %>
     </p>
 
     <p>
       <%= f.label :Enter_your_Quantity%>
-      <%= f.number_field :quantity %>
+      <%= f.select :quantity, [1,2,3,4,5] %>
     </p>
 
     <p>

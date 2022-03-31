@@ -1,0 +1,97 @@
+<div class="container">
+  <h1>Most sales Product by quantity</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sum of Quantity</th>
+        <th>phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Order.select("customer_id, sum(quantity) as Sum_of_Quantity").group("customer_id").order(Sum_of_Quantity: :desc).first(3).each do |order| %>
+  
+      <tr>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
+        <td><%= order.Sum_of_Quantity%> </td>
+        <td><%= order.customer.phone%> </td>
+        <td><%= order.customer.email%> </td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h1>Most sales Product by price</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sum of Quantity</th>
+        <th>phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Order.select("customer_id, sum(total_price) as Sum_of_Totalprice").group("customer_id").order(Sum_of_Totalprice: :desc).first(3).each do |order| %>
+  
+      <tr>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
+        <td><%= order.Sum_of_Totalprice%> </td>
+        <td><%= order.customer.phone%> </td>
+        <td><%= order.customer.email%> </td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h1>most booked order of product</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Booked Orders</th>
+        <th>phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Order.group(:customer_id).having(status:'booked').reverse_order.first(5).each do |a| %>
+  
+      <tr>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
+        <td><%= Order.where(customer_id:order.customer_id).where(status:'Booked').count %><td>
+        <td><%= order.customer.phone%> </td>
+        <td><%= order.customer.email%> </td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h1>most Cancelled order of product</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Cancelled Orders</th>
+        <th>phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Order.group(:customer_id).having(status:'Cancelled').reverse_order.first(5).each do |a| %>
+  
+      <tr>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
+        <td><%= Order.where(customer_id:order.customer_id).where(status:'Cancelled').count %><td>
+        <td><%= order.customer.phone%> </td>
+        <td><%= order.customer.email%> </td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+<div>

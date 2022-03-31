@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
   def index
-    @products = Product.all
+    @products = Product.all.unscoped
   end
   
   def new
@@ -16,7 +16,11 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     if @product.save
       flash[:notice] = "Product was created Successfully"
-      redirect_to product_path(@product)
+      if @product.is_active = "Yes"
+        redirect_to product_path(@product)
+      else
+        redirect_to products_path
+      end
     else
       render "new"
     end
@@ -43,13 +47,9 @@ class ProductsController < ApplicationController
     end 
   end
 
-  # def display_all_products
-  #   @products=Product.all.unscoped
-  # end
-
-  # def display_products_which_is_active
-  #   @products=Product.all
-  # end
+  def activeTrue
+    @products=Product.all
+  end
 
   private
     def set_product

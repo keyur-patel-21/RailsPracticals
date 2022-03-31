@@ -35,7 +35,7 @@
 
     <div class="field form-group">
       <%= f.label :What_is_the_status_of_order? %>
-      <%= f.select :status, ['In Stock', 'Out Of Stock', 'Coming Soon'], class:"form-control", placeholder:"Enter Capacity"%>
+      <%= f.select(:status, Product.statuses.keys) %>
     </div><br>
 
     <div class="action">

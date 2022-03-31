@@ -9,7 +9,10 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new(params.require(:order).permit(:quantity, :total_price, :product_id, :status, :customer_id))
+    @order = Order.new(order_params)
+    @temp = order_params[:product_id]
+    @product_price = product.find(@temp)
+    @order.total_price = @product_price.price * @order.quantity
     if @order.save
       flash[:notice] = "Order Saved Successfully"
       redirect_to  order_path(@order)
@@ -19,12 +22,12 @@ class OrdersController < ApplicationController
   end
   
   def edit
-    @order = Order.find(params[:id])
+    set_product
   end
   
   def update
-    @order = Order.find(params[:id])
-    if @order.update(params.require(:order).permit(:quantity, :total_price, :product_id, :status, :customer_id))
+    set_product
+    if @order.update(order_params)
       flash[:notice] = "Order updates Successfully"
       redirect_to  order_path(@order)
     else
@@ -33,13 +36,23 @@ class OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
+    set_product
   end
   
   def destroy
-    @order = Order.find(params[:id])
+    set_product
     if @order.destroy
       redirect_to orders_path
     end
+  end
+
+  private
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:quantity, :total_price, :status, :product_id,:customer_id)
   end
 end

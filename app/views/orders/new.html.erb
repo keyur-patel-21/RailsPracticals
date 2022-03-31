@@ -14,7 +14,7 @@
     
     <p>
       <%= f.label :Select_your_Product%>
-      <%= f.select :product_id, Product.all.map { |t| [t.title, t.id]} %>
+      <%= f.select :product_id, Product.InStock.map { |t| [t.title, t.id]} %>
     </p>
 
     <p>
@@ -29,7 +29,7 @@
 
     <p>
       <%= f.label :Order_status%>
-      <%= f.select :status, ['Booked', 'Cancelled']%>
+      <%= f.select(:status, Order.statuses.keys) %>
     </p>
 
     <p>

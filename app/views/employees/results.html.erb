@@ -1,0 +1,282 @@
+<%# List employees having age > 20 and < 40  %>
+<div class="container">
+  <h1>Employees having age more than 20 and less than 40</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where("age > 20").where("age < 40").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.age%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%#  List employees which are full_time_available %>
+  <h1>Employees available for full time</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Full time Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where(full_time_available: "Yes").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.full_time_available%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+<%#  List employees which have exact 5 number of orders and age > 25 %>
+<h1>Employees with 5 orders and more than 25 age.</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>No. of Orders</th>
+    </thead>
+    <tbody>
+      <% Employee.where("no_of_order == 5").where("age > 25").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.age%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+<%# List employees which are created before today %>
+<h1>Employees which are created before today.</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>created Date and Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where("created_at < ?", 1.days.ago).each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.created_at%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%# List employees which have exact 5 number of orders Or age < 25 %>
+  <h1>Employees having 5 orders and aged less than 25.</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>No. of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where("no_of_order == 5").where("age < 25").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.age%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%# List employees in descending order by age %>
+  <h1>Employees in descending order by age</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.order("age DESC").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.age%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%# List employees in ascending order by number of order %>
+  <h1>Employees in ascending order by number of order</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>No. of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.order("no_of_order ASC").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%# List employees having salary > 45000 %>
+  <h1>Employees having salary more than 45000</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where("salary > 45000").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.salary%></td>
+
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <%# Group employees by no_of_order with them and display employees with no_of_order > 5 %>
+  <h1>Group employees by no_of_order with them and display employees with no_of_order > 5</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>No. Of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.group("no_of_order").where("no_of_order > 5").each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br> 
+
+  <h1>exirWrite example for keywords unscope, only, reselect, reorder, reverse_order</h1>
+  <br>
+  <h2>Unscope:</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>No. Of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where('no_of_order > 10').order('no_of_order desc').unscope(:order).each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h2>Only:</h2>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th>Name</th>
+        <th>No. Of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where('no_of_order > 10').order('no_of_order desc').only(:order).each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h2>Reselect:</h2>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.select(:firstname).unscope(:select).select(:lastname).each do |employee| %>
+        <tr>
+          <td><%= employee.lastname%></td>
+        </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h2>Reorder:</h2>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th>Name</th>
+        <th>No. Of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.reorder('no_of_order ASC').each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+
+  <h2>reverse_order:</h2>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th>Name</th>
+        <th>No. Of Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Employee.where('no_of_order > 10').order('no_of_order desc').reverse_order.each do |employee| %>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.no_of_order%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table><br><br>
+<div>

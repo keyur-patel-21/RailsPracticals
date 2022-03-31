@@ -1,0 +1,48 @@
+<div class="container">
+  <h2> Search employees by email... </h2>
+  <form class="d-flex">
+    <input class="form-control me-2" name = "q" type="search" placeholder="Enter Employee's Email" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <% if flash.now[:notice] %>
+    <%= flash.now[:notice] %>
+  <%end%>
+</div><br><br>
+
+
+<div class="container">
+  <h1>Our Employees</h1>
+
+  <%= button_to 'Increase order of first 10 Employees', increaseOrder_path, method: :post, class:"btn btn-success" %>
+  <%= button_to 'Decrease order of first 10 Employees', decreaseOrder_path, method: :post, class:"btn btn-danger" %>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>No. of Orders</th>
+        <th>Full time Availability</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee|%>
+      <tr>
+        <td><%= employee.firstname + " " + employee.lastname%></td>
+        <td><%= employee.email%></td>
+        <td><%= employee.age%></td>
+        <td><%= employee.no_of_order%></td>
+        <td><%= employee.full_time_available%></td>
+        <td><%= employee.salary%></td>
+        <td><%= link_to "Show", employee_path(employee)%></td>
+        <td><%= link_to "Edit", edit_employee_path(employee)%></td>
+        <td><%= button_to "Delete", employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new Employee", new_employee_path, class:"btn btn-primary" %></p>
+</div><br><br>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @employee.firstname + " " + @employee.lastname %></h1>
+    <h2 class="lead"><%= @employee.email %></h2>
+    <p class="lead"><%= @employee.age %> yeras old.</p>
+
+    <hr class="my-4">
+  
+    <p class="lead">Number of Order:  <%= @employee.no_of_order %></p>
+    <p class="lead">Full time available:  <%= @employee.full_time_available %></p>
+    <p class="lead">Salary:   <%= @employee.salary %></p>
+
+    <%= link_to "Edit", edit_employee_path(@employee), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", employee_path(@employee), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Employee Listing", employees_path, class:"btn btn-info" %>
+  </div>
+</div>

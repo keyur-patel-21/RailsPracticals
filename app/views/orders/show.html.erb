@@ -3,7 +3,7 @@
     
       <h1 class="display-4"><%= @order.product.title %></h1>
       <h2 class="lead">Toatl Pieces: <%= @order.quantity %></h2> 
-      <p class="lead">Toatl Price: <%= (@order.quantity)*(@order.product.price) %></p>
+      <p class="lead">Toatl Price: <%= @order.total_price %></p>
 
       <hr class="my-4">
     

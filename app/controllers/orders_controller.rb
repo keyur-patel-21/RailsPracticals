@@ -1,7 +1,22 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    if params[:search]
+      @orders = Order.all
+      @orders = Order.where(status:'Booked') if params[:search] == 'Booked'
+      @orders = Order.where(status:'Cancelled') if params[:search] == 'Cancelled'
+    else
+      @orders = Order.all
+    end
+
+    begin
+      if !(params[:product_name].blank?)
+        @orders_by_product = Product.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
+      end
+      rescue Exception
+        flash[:notice] = "Record not found!"
+        redirect_to orders_path
+      end
   end
   
   def new
@@ -10,23 +25,20 @@ class OrdersController < ApplicationController
   
   def create
     @order = Order.new(order_params)
-    @temp = order_params[:product_id]
-    @product_price = product.find(@temp)
-    @order.total_price = @product_price.price * @order.quantity
     if @order.save
       flash[:notice] = "Order Saved Successfully"
-      redirect_to  order_path(@order)
+      redirect_to order_path(@order)
     else
       render "new"
     end
   end
   
   def edit
-    set_product
+    set_order
   end
   
   def update
-    set_product
+    set_order
     if @order.update(order_params)
       flash[:notice] = "Order updates Successfully"
       redirect_to  order_path(@order)
@@ -36,11 +48,11 @@ class OrdersController < ApplicationController
   end
   
   def show
-    set_product
+    set_order
   end
   
   def destroy
-    set_product
+    set_order
     if @order.destroy
       redirect_to orders_path
     end

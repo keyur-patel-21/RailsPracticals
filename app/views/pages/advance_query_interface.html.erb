@@ -47,7 +47,7 @@
     </tbody>
   </table><br><br>
 
-  <h1>most booked order of product</h1>
+  <h1> most booked order of product </h1>
 
   <table class="table table-hover">
     <thead>
@@ -59,8 +59,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Order.group(:customer_id).having(status:'booked').reverse_order.first(5).each do |a| %>
-  
+      <% Order.group(:customer_id).having(status:"Booked").reverse_order.first(5).each do |order| %>
       <tr>
         <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
         <td><%= Order.where(customer_id:order.customer_id).where(status:'Booked').count %><td>
@@ -69,9 +68,9 @@
       </tr>
       <% end%>
     </tbody>
-  </table><br><br>
+  </table><br><br>  
 
-  <h1>most Cancelled order of product</h1>
+  <h1> most Cancelled order of product </h1>
 
   <table class="table table-hover">
     <thead>
@@ -83,8 +82,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Order.group(:customer_id).having(status:'Cancelled').reverse_order.first(5).each do |a| %>
-  
+      <% Order.group(:customer_id).having(status:"Cancelled").reverse_order.first(5).each do |order| %>
       <tr>
         <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
         <td><%= Order.where(customer_id:order.customer_id).where(status:'Cancelled').count %><td>

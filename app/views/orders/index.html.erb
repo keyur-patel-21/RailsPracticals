@@ -1,4 +1,49 @@
 <div class="container">
+  <br><br>
+  <%= form_tag orders_path, :method => 'get' do %>
+  <p>
+  <%= text_field_tag :search, params[:search], placeholder:'Search by order status' %>
+  <%= submit_tag "Search" %>
+  </p>
+  <% end %>
+
+  <%= form_tag orders_path, :method => 'get' do %>
+    <p>
+    <%= text_field_tag :product_name, params[:product_name], placeholder:'Search by product name' %>
+    <%= submit_tag "Search" %>
+    </p>
+  <% end %>
+    
+  <% if flash[:notice] %>
+    <% flash.each do |name, msg| %>
+    <span style="color:red;"> <%= msg %> </span>
+  <% end %>
+  <% end %><br>
+    <%if !(params[:product_name].blank?) %>
+    <table class="tabl" >
+      <thead>
+        <tr>
+          <th>Product Name</th>
+        <th>Order ID</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders_by_product.each do |order| %>
+    <tr>
+    <td><%= order.product.title %></td>
+    <td><%= order.id %></td>
+    <td><%= order.quantity %></td>
+    <td><%= order.total_price %></td>
+    <td><%= order.status %></td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <% end %>
+
   <h1>Orders</h1>
 
   <table class="table table-hover">
@@ -16,7 +61,7 @@
       <tr>
         <td><%= order.product.title %></td>
         <td><%= order.quantity %></td>
-        <td><%= (order.quantity)*(order.product.price) %></td>
+        <td><%= order.total_price %></td>
         <td><%= order.status%></td>
         <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
         

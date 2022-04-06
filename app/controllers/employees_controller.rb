@@ -2,6 +2,7 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    search()
   end
   
   def new
@@ -44,16 +45,14 @@ class EmployeesController < ApplicationController
   end
 
   def results
-    
   end
 
   def search
     if params[:q]
       if Employee.find_by("email = ?",params[:q])
-        @employee = Employee.find_by("email = ?",params[:q])
-        puts "email exist, first record is given"
+        flash.now[:notice] = "Entered Email Does  Exist."
       else
-        flash[:notice] = "Entered Email Does not Exist."
+        flash.now[:notice] = "Entered Email Does not Exist."
       end    
     end  
   end

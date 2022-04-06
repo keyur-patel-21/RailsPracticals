@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < ApplicationControlle
   
   def index
     @products = Product.all.unscoped
@@ -59,5 +59,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :price, :capacity,:is_active, :status)
     end
-
 end

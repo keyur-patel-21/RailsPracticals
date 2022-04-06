@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   resources :products
   resources :customers
   resources :orders
+
+  # Active Record Association
+  resources :events
 end

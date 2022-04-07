@@ -1,28 +1,32 @@
+<p class="row justify-content-md-center mt-4"><%= link_to "CRETATE NEW EVENT", new_event_path, class:"btn btn-info" %></p>
+
+<h1 class="text-center mt-4">Events List</h1>
+
 <div class="container">
-  <h1>Events List</h1>
+<% @events.each do |event|%>
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow  mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+          by user
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to event.name, event_path(event), class:"text-success" %></h5>
+          <p class="card-text">Date : <%= event.event_date%></p>
+          <p class="card-text"><%= truncate(event.description, length: 100)%></p>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @events.each do |event|%>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.description%></td>
-        <td><%= event.event_date%></td>
-        <td><%= link_to "Show", event_path(event)%></td>
-        <td><%= link_to "Edit", edit_event_path(event)%></td>
-        <td><%= button_to "Delete", event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
-      </tr>
-      <% end%>
-    </tbody>
-  </table>
-
-  <p><%= link_to "Add new event", new_event_path, class:"btn btn-primary" %></p>
+          <%= link_to "View", event_path(event), class:"btn btn-success"%>
+          <%= link_to "Edit", edit_event_path(event), class:"btn btn-primary"%>
+          <%= link_to "Delete", event_path(event), class:"btn btn-danger"%>
+          
+          </div>
+        <div class="card-footer text-muted">
+          <small> listed <%= time_ago_in_words(event.created_at)%>ago, edited <%= time_ago_in_words(event.updated_at)%> ago </small>
+        </div>
+      </div>
+    </div>
+  </div>  
+<% end %>
 </div>
-  
+
+ 

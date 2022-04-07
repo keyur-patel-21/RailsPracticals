@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   # Active Record Association
   resources :events
+  get "signup", to: "users#new"
+  resources :users, except: [:new]
 end

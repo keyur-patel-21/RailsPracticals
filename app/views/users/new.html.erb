@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Sign up to Create user</h1>
+
+  <% if @user.errors.any? %>
+
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :user, url:users_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.text_field :username, class:"form-control", placeholder:"Enter your Usename"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.password_field :password, class:"form-control", placeholder:"Choose a Password"%>
+    </div><br>
+    
+
+    <div class="action">
+      <%= f.submit "Sign up", class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Event Listing", events_path, class:"btn btn-info" %>
+<div>

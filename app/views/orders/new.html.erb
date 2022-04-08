@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Create a new Order</h1>
+
+  <% if @order.errors.any? %>
+    <h2> The following error(s) prevented the Order from being saved </h2>
+    <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :order, url:orders_path, local: true do |f| %> 
+    
+    <p>
+      <%= f.label :Select_your_Product%>
+      <%= f.select :product_id, Product.InStock.map { |t| [t.title, t.id]} %>
+    </p>
+
+    <p>
+      <%= f.label :Who_is_the_customer?%>
+      <%= f.select :customer_id, Customer.all.map { |t| [t.firstname + " " + t.lastname, t.id]} %>
+    </p>
+
+    <p>
+      <%= f.label :Enter_your_Quantity%>
+      <%= f.select :quantity, [1,2,3,4,5] %>
+    </p>
+
+    <p>
+      <%= f.label :Order_status%>
+      <%= f.select(:status, Order.statuses.keys) %>
+    </p>
+
+    <p>
+      <%= f.submit class:"btn btn-success" %>
+    </p>
+      
+  <% end %>
+
+  <%= link_to "Return to Books Listing", orders_path, class:"btn btn-info" %>
+<div>

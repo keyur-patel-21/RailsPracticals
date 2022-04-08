@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @customer.firstname + " " + @customer.lastname %></h1>
+    <h2 class="lead"><%= @customer.phone %></h2>
+    <p class="lead"> <%= @customer.email %> </p>
+
+    <hr class="my-4">
+
+    <%= link_to "Edit", edit_customer_path(@customer), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", customer_path(@customer), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to customer Listing", customers_path, class:"btn btn-info" %>
+  </div>
+</div>

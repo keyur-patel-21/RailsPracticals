@@ -1,0 +1,54 @@
+<div class="container">
+  <br><br>
+
+  <%# Form for searching order by status. %>
+  <%= form_tag orders_path, :method => 'get' do %>
+    <p>
+      <%= select_tag(:search, options_for_select(Order.statuses.keys)) %>
+      <%= submit_tag "Apply" %>
+    </p>
+  <% end %>
+
+  <%# From for searching order by product Name. %>
+  <%= form_tag orders_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :product_name, params[:product_name], placeholder:'Search by product name' %>
+      <%= submit_tag "Search" %>
+    </p>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <% flash.each do |name, msg| %>
+      <span style="color:red;"> <%= msg %> </span>
+    <% end %>
+  <% end %><br>
+  
+  <h1>Orders</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Customer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order|%>
+      <tr>
+        <td><%= order.product.title %></td>
+        <td><%= order.quantity %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.status%></td>
+        <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
+        <td><%= link_to "Show", order_path(order), class:"btn btn-primary"%></td>
+        <td><%= link_to "Edit", edit_order_path(order), class:"btn btn-secondary"%></td>
+        <td><%= button_to "Delete", order_path(order), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+  <p><%= link_to "Add new Order", new_order_path, class:"btn btn-success" %></p>
+</div>

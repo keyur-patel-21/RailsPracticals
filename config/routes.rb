@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   resources :orders
 
   # Active Record Association
-  resources :events
+  get "events/home"
   get "signup", to: "users#new"
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  resources :events
   resources :users, except: [:new]
 end

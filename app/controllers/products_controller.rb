@@ -1,4 +1,4 @@
-class ProductsController < ApplicationControlle
+class ProductsController < ApplicationController
   
   def index
     @products = Product.all.unscoped

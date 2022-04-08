@@ -59,7 +59,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Order.group(:customer_id).having(status:"Booked").reverse_order.first(5).each do |order| %>
+      <% Order.group(:customer_id).having(status:"Booked").order(quantity: :desc).first(5).each do |order| %>
       <tr>
         <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
         <td><%= Order.where(customer_id:order.customer_id).where(status:'Booked').count %><td>
@@ -82,10 +82,10 @@
       </tr>
     </thead>
     <tbody>
-      <% Order.group(:customer_id).having(status:"Cancelled").reverse_order.first(5).each do |order| %>
+      <% Order.group(:customer_id).having(status:"Cancelled").order(quantity: :desc).first(5).each do |order| %>
       <tr>
         <td><%= order.customer.firstname + " " + order.customer.lastname%></td>
-        <td><%= Order.where(customer_id:order.customer_id).where(status:'Cancelled').count %><td>
+        <td><%= Order.where(customer_id:order.customer_id).where(status:'Cancelled').count %><td> 
         <td><%= order.customer.phone%> </td>
         <td><%= order.customer.email%> </td>
       </tr>

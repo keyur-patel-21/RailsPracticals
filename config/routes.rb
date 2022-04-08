@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # Advance Active Record Query Interface Routes
   get "products/activeTrue"
-  get "products/advance_query_interface"
+  get "pages/advance_query_interface"
   resources :products
   resources :customers
   resources :orders

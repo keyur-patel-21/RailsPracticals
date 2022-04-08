@@ -4,7 +4,7 @@
   <%# Form for searching order by status. %>
   <%= form_tag orders_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search], placeholder:'Search by order status' %>
+      <%= select_tag :search Order.statuses.keys %>
       <%= submit_tag "Search" %>
     </p>
   <% end %>
@@ -30,6 +30,15 @@
       </tr>
     </thead>
     <tbody>
+      <% if params[:product_name].present? %>
+        <% if @view_orders.present? %>
+          <% @orders = @view_orders %>
+        <% else  %>
+          <p>No Record Found </p>  
+        <% end  %>
+      <%else%>
+        <% @orders = Order.all  %>
+      <% end %>
       <% @orders.each do |order|%>
       <tr>
         <td><%= order.product.title %></td>

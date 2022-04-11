@@ -6,8 +6,10 @@
 
     <hr class="my-4">
 
-    <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary" %> <br> <br>
-    <%= button_to "Delete", event_path(@event), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% if logged_in? && @event.user == current_user %>
+      <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary" %> <br> <br>
+      <%= button_to "Delete", event_path(@event), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% end %>
     <%= link_to "Return to event Listing", events_path, class:"btn btn-info" %>
   </div>
 </div>

@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+	before_action :set_event, only: [:show, :edit, :update, :destroy]
+	before_action :require_user, except: [:show, :index]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 	
 	def index
 		@events = Event.all	
@@ -10,6 +13,7 @@ class EventsController < ApplicationController
 	
 	def create
 		@event = Event.new(event_params)
+		@event.user = current_user
 		if @event.save
 			redirect_to event_path(@event)
 		else
@@ -18,11 +22,9 @@ class EventsController < ApplicationController
 	end
 	
 	def edit
-		set_event
 	end
 	
 	def update
-		set_event
 		if @event.update(event_params)
 			redirect_to event_path(@event)
 		else
@@ -31,11 +33,9 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		set_event
 	end
 	
 	def destroy
-		set_event
 		if @event.destroy
 			redirect_to events_path
 		end
@@ -49,5 +49,12 @@ class EventsController < ApplicationController
 
 	def event_params
 		params.require(:event).permit(:name, :description, :event_date, :user_id)
+	end
+
+	def require_same_user
+		if current_user !=  @event.user
+			flash[:alert] = "You can only edit or delete your own event"
+			redirect_to @event
+		end
 	end
 end

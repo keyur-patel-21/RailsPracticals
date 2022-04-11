@@ -1,4 +1,7 @@
 <h1 class="text-center mt-4"><%= @user.username %>'s Profile</h1>
+<% if logged_in? && @user == current_user %>
+    <%= link_to "Log Out", logout_path, class:"btn btn-danger", method: :delete %>
+<% end %>
 
 <div class="container mt-5">
     <div class="row d-flex justify-content-center">
@@ -10,7 +13,10 @@
                     <div class="px-4 mt-1">
                     </div>
                     
-                    <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary" %> </div>
+                    <% if logged_in? && @user == current_user %>
+                        <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary" %> </div>
+                        <%= link_to "Delete Profile", user_path(current_user), class:"btn btn-danger", method: :delete, data: { Confirm: "Are you Sure?"} %> </div>
+                    <% end %>
                 </div>
             </div>
         </div>

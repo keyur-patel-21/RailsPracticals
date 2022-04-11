@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy] 
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -17,12 +20,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "Acconut and all associated events has been deleted succesfully"
+    redirect_to events_path
+  end
+
   def edit
-    set_user
   end
 
   def update
-    set_user
     if @user.update(user_params)
       redirect_to user_path
     else
@@ -31,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_user
     @events = @user.events
   end
 
@@ -43,5 +50,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "You can Only edit your own Account"
+      redirect_to @user
+    end
   end
 end

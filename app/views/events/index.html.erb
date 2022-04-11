@@ -1,9 +1,19 @@
 <% if logged_in? %>
   <p class="row justify-content-md-center mt-4"><%= link_to "CRETATE NEW EVENT", new_event_path, class:"btn btn-info" %></p>
 <% end %>
+
 <h1 class="text-center mt-4">Events List</h1>
 
 <div class="container">
+
+<%# Form for filter event by category. %>
+  <%= form_tag events_path, :method => 'get' do %>
+    <p>
+      <%= select_tag(:filter, options_for_select(Category.all.map { |t| [t.name, t.id]})) %>
+      <%= submit_tag "Apply" %>
+    </p>
+  <% end %>
+
 <% @events.each do |event|%>
   <div class="row justify-content-md-center">
     <div class="col-8 mt-4">

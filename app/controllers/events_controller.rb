@@ -4,7 +4,15 @@ class EventsController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 	
 	def index
-		@events = Event.all	
+		if params[:filter]
+      @events = Event.all
+      @events = Event.where(category:'Music') if params[:search] == 'Music'
+      @events = Event.where(category:'Visual Arts') if params[:search] == 'Visual Arts'
+      @events = Event.where(category:'Film') if params[:search] == 'Film'
+      @events = Event.where(category:'Fashion') if params[:search] == 'Fashion'
+    else
+      @events = Event.all
+    end	
 	end
 	
 	def new

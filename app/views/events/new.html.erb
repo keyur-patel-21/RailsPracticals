@@ -21,6 +21,11 @@
     </div><br>
  
     <div class="field form-group">
+      <%= f.label :Category_of_Event%>
+      <%= f.select :category_id, Category.all.map { |t| [t.name, t.id]}%>
+    </div><br>
+
+    <div class="field form-group">
       <%= f.label :Date_of_Event%>
       <%= f.date_select :event_date, :start_year=>1900, class:"form-control", placeholder:"Date of Birth"%>
     </div><br>

@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Edit Category</h1>
+
+  <% if @category.errors.any? %>
+    <h2> The following error(s) prevented the Category from being saved </h2>
+    <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model: @category,local: true) do |f| %> 
+    
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+    
+  <% end %>
+
+  <%= link_to "Retrun to Category Listing", categories_path, class:"btn btn-info" %>
+<div>

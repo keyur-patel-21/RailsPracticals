@@ -19,6 +19,11 @@
     <div class="field form-group">
       <%= f.text_field :description, class:"form-control", placeholder:"Enter Event Description"%>
     </div><br>
+
+    <div class="field form-group">
+      <%= f.label :Category_of_Event%>
+      <%= f.select :category_id, Category.all.map { |t| [t.name, t.id]}%>
+    </div><br>
  
     <div class="field form-group">
       <%= f.label :Date_of_Birth%>

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   # Active Record Association
   get "events/home"
+  get "users/enroll"
+  get "users/unenroll"
+
   get "signup", to: "users#new"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

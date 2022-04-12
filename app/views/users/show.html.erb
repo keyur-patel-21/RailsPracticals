@@ -23,4 +23,20 @@
     </div>
 </div>
 
-<h1 class="text-center mt-4">Events Created by <%= @user.username %></h1>
+<div class="container">
+<% if logged_in? && @user == current_user %>
+  <% current_user.enrollments.each do |enroll| %>
+  <h1 class="text-center mt-4">Events Created by <%= @user.username %></h1>
+  <div class="card">
+  <div class="card-header">
+    <h5 class="card-title"><%= enroll.event.name %> </h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= enroll.event.description %></p>
+  <% end %>
+  </div>
+</div>
+<% end %>
+</div>
+  
+

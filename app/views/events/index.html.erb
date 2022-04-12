@@ -23,6 +23,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= link_to event.name, event_path(event), class:"text-success" %></h5>
+          <h5 class="card-title"><%= event.category.name %></h5>
           <p class="card-text">Date : <%= event.event_date%></p>
           <p class="card-text"><%= truncate(event.description, length: 100)%></p>
 
@@ -32,6 +33,15 @@
             <%= link_to "Edit", edit_event_path(event), class:"btn btn-primary"%>
             <%= link_to "Delete", event_path(event), class:"btn btn-danger"%>
           <% end %>
+
+          <% if logged_in? %>
+            <% if Enrollment.where("user_id=? and event_id=?", current_user, event).blank? %>
+              <td><%= button_to "Enroll", users_enroll_path(id: session[:user_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
+            <% else %>
+              <td><%= button_to "Unenroll", users_unenroll_path(current_user), params: { event_id: event.id }, method: "get", class: "btn btn-secondary" %></td>
+            <% end %>
+          <% end %>
+
           </div>
         <div class="card-footer text-muted">
           <small> listed <%= time_ago_in_words(event.created_at)%>ago, edited <%= time_ago_in_words(event.updated_at)%> ago </small>
@@ -41,5 +51,7 @@
   </div>  
 <% end %>
 </div>
+
+
 
  

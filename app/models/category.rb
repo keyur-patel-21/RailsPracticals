@@ -1,9 +1,7 @@
 class Category < ApplicationRecord
 
-  belongs_to :event
+  has_many :events
 
-  validates :name, presence: true,
-                   uniqueness: true,
-                   length: { minimum: 3, maximum: 25}
+  validates :name, presence: true
 
 end

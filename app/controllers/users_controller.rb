@@ -42,10 +42,25 @@ class UsersController < ApplicationController
     @events = @user.events
   end
 
+  def enroll
+    @user = User.find_by(id: session[:user_id])
+    if session[:user_id] && params[:event_id]
+      Enrollment.create(user_id:session[:user_id],event_id:params[:event_id])
+      redirect_to events_path
+    end
+  end
+
+  def unenroll
+    enrollment = Enrollment.find_by("user_id=? and event_id=?",current_user,params[:event_id])
+    enrollment.destroy
+
+    redirect_to events_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :address_id, addresses_attributes: [:user_address])
   end
 
   def set_user

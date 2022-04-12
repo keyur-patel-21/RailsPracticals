@@ -20,6 +20,12 @@
       <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
     </div><br>
 
+    <%= f.fields_for :addresses do |af| %>
+      <div class="field form-group">
+        <%= af.text_field :user_address, class:"form-control", placeholder:"Enter Address"%>
+      </div><br>
+    <% end %>
+
     <div class="field form-group">
       <%= f.password_field :password, class:"form-control", placeholder:"Choose a Password"%>
     </div><br>

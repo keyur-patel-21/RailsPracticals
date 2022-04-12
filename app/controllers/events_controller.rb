@@ -4,15 +4,8 @@ class EventsController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 	
 	def index
-		if params[:filter]
-      @events = Event.all
-      @events = Event.where(category:'Music') if params[:search] == 'Music'
-      @events = Event.where(category:'Visual Arts') if params[:search] == 'Visual Arts'
-      @events = Event.where(category:'Film') if params[:search] == 'Film'
-      @events = Event.where(category:'Fashion') if params[:search] == 'Fashion'
-    else
-      @events = Event.all
-    end	
+      @events = Event.order(event_date: :desc)
+      @events=Event.where('category_id=?',params[:filter]) if params[:filter]
 	end
 	
 	def new
@@ -56,7 +49,7 @@ class EventsController < ApplicationController
 	end
 
 	def event_params
-		params.require(:event).permit(:name, :description, :event_date, :user_id)
+		params.require(:event).permit(:name, :description, :event_date, :user_id, :category_id)
 	end
 
 	def require_same_user

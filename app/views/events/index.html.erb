@@ -26,8 +26,6 @@
           <h5 class="card-title"><%= event.category.name %></h5>
           <p class="card-text">Date : <%= event.event_date%></p>
           <p class="card-text"><%= truncate(event.description, length: 100)%></p>
-
-          <%= link_to "View", event_path(event), class:"btn btn-success"%>
           
           <% if logged_in? && event.user == current_user %>
             <%= link_to "Edit", edit_event_path(event), class:"btn btn-primary"%>
@@ -46,6 +44,28 @@
         <div class="card-footer text-muted">
           <small> listed <%= time_ago_in_words(event.created_at)%>ago, edited <%= time_ago_in_words(event.updated_at)%> ago </small>
         </div>
+
+        <% if event.comments.any? %>
+          <div class="card-footer text-muted">
+            <small> 
+                <h6> Comments </h6>
+                <% event.comments.each do |cmt| %>
+                  <p><%= cmt.content %></p>
+                  <%# <p><%= cmt.user %></p> 
+              <% end %>  
+            </small>
+          </div>
+        <% end %>
+
+        <% if logged_in? %>
+          <div class="card-footer text-muted">
+            <%= form_with(url: events_add_comment_path, method: "get") do |f| %>
+              <%= f.text_field :content %>
+              <%= f.hidden_field :event_id, value: event.id %>
+              <%= f.submit "Add Comment", class:"btn btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>  

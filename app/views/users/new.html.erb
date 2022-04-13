@@ -10,7 +10,7 @@
     </ul>
   <% end %>
 
-  <%= form_with scope: :user, url:users_path, local: true do |f| %> 
+  <%= form_with(model: @user) do |f| %> 
     
     <div class="field form-group">
       <%= f.text_field :username, class:"form-control", placeholder:"Enter your Usename"%>
@@ -19,8 +19,8 @@
     <div class="field form-group">
       <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
     </div><br>
-
-    <%= f.fields_for :addresses do |af| %>
+      
+    <%= f.fields_for :address do |af| %>
       <div class="field form-group">
         <%= af.text_field :user_address, class:"form-control", placeholder:"Enter Address"%>
       </div><br>

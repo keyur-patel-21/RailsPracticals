@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   # Active Record Association
   get "events/home"
+  get "events/add_comment"
   get "users/enroll"
   get "users/unenroll"
 

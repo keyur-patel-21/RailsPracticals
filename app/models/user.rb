@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :enrollments
   has_many :events, dependent: :destroy
   has_one :address
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :username, presence: true, 
                       uniqueness: { case_sensetive: false},

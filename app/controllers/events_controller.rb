@@ -42,6 +42,12 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def add_comment
+    @event = Event.find(params[:event_id]).comments.create("content"=>params[:content])
+		
+    redirect_to events_path
+  end
+
 	private
 
 	def set_event

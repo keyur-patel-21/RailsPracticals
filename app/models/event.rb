@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
 
   has_many :enrollments
+  has_many :comments, as: :commentable, dependent: :destroy
   validates :name, presence: true,
                   length: { minimum: 3, maximum: 100 }
   validates :description, presence: true,

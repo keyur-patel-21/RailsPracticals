@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_110645) do
+ActiveRecord::Schema.define(version: 2022_04_13_053531) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2022_04_12_110645) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -138,8 +147,6 @@ ActiveRecord::Schema.define(version: 2022_04_12_110645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.integer "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_13_053531) do
+ActiveRecord::Schema.define(version: 2022_04_13_121320) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_04_13_053531) do
     t.integer "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 

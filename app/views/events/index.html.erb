@@ -50,8 +50,9 @@
             <small> 
                 <h6> Comments </h6>
                 <% event.comments.each do |cmt| %>
-                  <p><%= cmt.content %></p>
-                  <%# <p><%= cmt.user %></p> 
+                  <span><%= cmt.user.username %></span>
+                  <span><%= cmt.content %></span>
+                   
               <% end %>  
             </small>
           </div>

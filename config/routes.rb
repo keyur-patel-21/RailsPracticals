@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root "pages#home"
   get "pages/about"
-  get "pages/advance_query_interface"
 
   resources :books
   resources :authors
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
 
   # Advance Active Record Query Interface Routes
   get "products/activeTrue"
+  get "pages/advance_query_interface"
   resources :products
   resources :customers
   resources :orders

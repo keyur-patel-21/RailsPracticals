@@ -1,10 +1,14 @@
 <div class="container">
   <h2> Search employees by email... </h2>
-  <form class="d-flex" action="/search">
+  <form class="d-flex">
     <input class="form-control me-2" name = "q" type="search" placeholder="Enter Employee's Email" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
+  <% if flash.now[:notice] %>
+    <%= flash.now[:notice] %>
+  <%end%>
 </div><br><br>
+
 
 <div class="container">
   <h1>Our Employees</h1>
@@ -42,8 +46,3 @@
 
   <p><%= link_to "Add new Employee", new_employee_path, class:"btn btn-primary" %></p>
 </div><br><br>
-
-
-
-
-  

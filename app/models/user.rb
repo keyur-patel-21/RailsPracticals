@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_one :address
   #has_many :comments, as: :commentable, dependent: :destroy
   has_many :comments
+  has_many :likes
+  
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :username, presence: true, 

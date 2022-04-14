@@ -42,15 +42,6 @@ class EventsController < ApplicationController
 		end
 	end
 
-	def add_comment
-
-		puts "-----------------------------------------------------------------------------"
-		puts current_user.username
-    @event = Event.find(params[:event_id]).comments.create("content"=>params[:content],"user_id"=>current_user.id)
-		
-    redirect_to events_path
-  end
-
 	private
 
 	def set_event

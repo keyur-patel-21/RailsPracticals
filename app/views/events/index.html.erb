@@ -6,7 +6,7 @@
 
 <div class="container">
 
-<%# Form for filter event by category. %>
+  <%# Form for filter event by category. %>
   <%= form_tag events_path, :method => 'get' do %>
     <p>
       <%= select_tag(:filter, options_for_select(Category.all.map { |t| [t.name, t.id]})) %>
@@ -14,63 +14,41 @@
     </p>
   <% end %>
 
-<% @events.each do |event|%>
-  <div class="row justify-content-md-center">
-    <div class="col-8 mt-4">
-      <div class="card text-center shadow  mb-5 bg-white rounded">
-        <div class="card-header font-italic">
-          Organised By: <%= event.user.username %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to event.name, event_path(event), class:"text-success" %></h5>
-          <h5 class="card-title"><%= event.category.name %></h5>
-          <p class="card-text">Date : <%= event.event_date%></p>
-          <p class="card-text"><%= truncate(event.description, length: 100)%></p>
+  <% @events.each do |event|%>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow  mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            Organised By: <%= event.user.username %>
+          </div>
           
-          <% if logged_in? && event.user == current_user %>
-            <%= link_to "Edit", edit_event_path(event), class:"btn btn-primary"%>
-            <%= link_to "Delete", event_path(event), class:"btn btn-danger"%>
-          <% end %>
-
-          <% if logged_in? %>
-            <% if Enrollment.where("user_id=? and event_id=?", current_user, event).blank? %>
-              <td><%= button_to "Enroll", users_enroll_path(id: session[:user_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
-            <% else %>
-              <td><%= button_to "Unenroll", users_unenroll_path(current_user), params: { event_id: event.id }, method: "get", class: "btn btn-secondary" %></td>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to event.name, event_path(event), class:"text-success" %></h5>
+            <h5 class="card-title"><%= event.category.name %></h5>
+            <p class="card-text">Date : <%= event.event_date%></p>
+            <p class="card-text"><%= truncate(event.description, length: 100)%></p>
+              
+            <% if logged_in? && event.user == current_user %>
+              <%= link_to "Edit", edit_event_path(event), class:"btn btn-primary"%>
+              <%= link_to "Delete", event_path(event), class:"btn btn-danger"%>
             <% end %>
-          <% end %>
 
+            <% if logged_in? %>
+              <% if Enrollment.where("user_id=? and event_id=?", current_user, event).blank? %>
+                <td><%= button_to "Enroll", users_enroll_path(id: session[:user_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
+              <% else %>
+                <td><%= button_to "Unenroll", users_unenroll_path(current_user), params: { event_id: event.id }, method: "get", class: "btn btn-secondary" %></td>
+              <% end %>
+            <% end %>
           </div>
-        <div class="card-footer text-muted">
-          <small> listed <%= time_ago_in_words(event.created_at)%>ago, edited <%= time_ago_in_words(event.updated_at)%> ago </small>
+
+          <div class="card-footer text-muted">
+            <small> listed <%= time_ago_in_words(event.created_at)%>ago, edited <%= time_ago_in_words(event.updated_at)%> ago </small>
+          </div>
         </div>
-
-        <% if event.comments.any? %>
-          <div class="card-footer text-muted">
-            <small> 
-                <h6> Comments </h6>
-                <% event.comments.each do |cmt| %>
-                  <span><%= cmt.user.username %></span>
-                  <span><%= cmt.content %></span>
-                   
-              <% end %>  
-            </small>
-          </div>
-        <% end %>
-
-        <% if logged_in? %>
-          <div class="card-footer text-muted">
-            <%= form_with(url: events_add_comment_path, method: "get") do |f| %>
-              <%= f.text_field :content %>
-              <%= f.hidden_field :event_id, value: event.id %>
-              <%= f.submit "Add Comment", class:"btn btn-primary" %>
-            <% end %>
-          </div>
-        <% end %>
       </div>
-    </div>
-  </div>  
-<% end %>
+    </div>  
+  <% end %>
 </div>
 
 

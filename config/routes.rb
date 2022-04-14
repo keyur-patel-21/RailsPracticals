@@ -21,18 +21,25 @@ Rails.application.routes.draw do
   resources :products
   resources :customers
   resources :orders
+  get "comments/like", to: "comments#like"
+  resources :comments
 
   # Active Record Association
   get "events/home"
-  get "events/add_comment"
+  # get "comments/add_comment"
+
   get "users/enroll"
   get "users/unenroll"
+  
 
   get "signup", to: "users#new"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+  
   resources :events
   resources :users, except: [:new]
   resources :categories
+ 
+  
 end

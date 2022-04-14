@@ -4,8 +4,8 @@ class EventsController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 	
 	def index
-      @events = Event.order(event_date: :desc)
-      @events=Event.where('category_id=?',params[:filter]) if params[:filter]
+    @events = Event.order(event_date: :desc)
+    @events=Event.where('category_id=?',params[:filter]) if params[:filter]
 	end
 	
 	def new

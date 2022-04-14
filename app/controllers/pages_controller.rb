@@ -5,8 +5,4 @@ class PagesController < ApplicationController
 
   def about
   end
-
-  def advance_query_interface
-  end
-
 end

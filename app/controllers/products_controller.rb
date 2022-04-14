@@ -51,6 +51,9 @@ class ProductsController < ApplicationController
     @products=Product.all
   end
 
+  def advance_query_interface
+  end
+
   private
     def set_product
       @product = Product.find(params[:id])
@@ -59,5 +62,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :price, :capacity,:is_active, :status)
     end
-
 end

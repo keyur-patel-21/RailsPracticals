@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
     begin
       if !(params[:product_name].blank?)
-        @orders_by_product = Product.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
+        @orders = Product.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
       end
       rescue Exception  
         flash[:notice] = "Record not found!"

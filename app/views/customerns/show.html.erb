@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @customern.name %></h1>
+  
+    <hr class="my-4">
+
+    <%= link_to "Edit", edit_customern_path(@customern), class:"btn btn-primary" %> <br> <br>
+    <%= link_to "Return to customer Listing", customerns_path, class:"btn btn-info" %>
+  </div>
+</div>

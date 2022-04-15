@@ -40,6 +40,11 @@ Rails.application.routes.draw do
   resources :events
   resources :users, except: [:new]
   resources :categories
- 
-  
+
+  # Rails_Routing
+  resources :productns do
+    resources :orderns
+  end    
+
+  resources :customerns
 end

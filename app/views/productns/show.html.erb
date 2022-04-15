@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @productn.name %></h1>
+    <h2 class="lead"><%= @productn.rate %></h2>
+
+    <hr class="my-4">
+
+    <%= link_to "Edit", edit_productn_path(@productn), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", productn_path(@productn), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Product Listing", productns_path, class:"btn btn-info" %>
+  </div>
+</div>

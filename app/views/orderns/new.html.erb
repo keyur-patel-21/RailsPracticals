@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Create a new Order</h1>
+
+  <% if @ordern.errors.any? %>
+    <h2> The following error(s) prevented the Book from being saved </h2>
+    <ul>
+      <% @ordern.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+ 
+  <%= form_with scope: :ordern, url:orderns_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.select :productn_id, Productn.all.map { |t| [t.name, t.id]}%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.number_field :quantity, class:"form-control", placeholder:"Enter Quantity"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Orders Listing", orderns_path, class:"btn btn-info" %>
+<div>

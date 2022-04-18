@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Create a new Customer</h1>
 
-  <%= form_with scope: :customern, url:customerns_path, local: true do |f| %> 
+  <%= form_with scope: :customern, url:business_customerns_path, local: true do |f| %> 
 
     <div class="field form-group">
       <%= f.text_field :name, class:"form-control", placeholder:"Enter Name"%>
@@ -13,5 +13,5 @@
       
   <% end %>
 
-  <%= link_to "Return to Faculties Listing", customerns_path, class:"btn btn-info" %>
+  <%= link_to "Return to Csutomer Listing", business_customerns_path, class:"btn btn-info" %>
 <div>

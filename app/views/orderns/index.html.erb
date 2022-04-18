@@ -6,6 +6,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th>Order ID</th>
         <th>Product</th>
         <th>Quantity</th>
       </tr>
@@ -13,16 +14,12 @@
     <tbody>
       <% @orderns.each do |order|%>
       <tr>
+        <td><%= order.id%></td>
         <td><%= order.productn.name %></td>
         <td><%= order.quantity%></td>
-        <td><%= link_to "Show", ordern_path(order)%></td>
-        <td><%= link_to "Edit", edit_ordern_path(order)%></td>
-        <td><%= button_to "Delete", ordern_path(order), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
       </tr>
       <% end%>
     </tbody>
   </table>
-
-  <p><%= link_to "Add new Order", new_ordern_path, class:"btn btn-primary" %></p>
 </div>
   

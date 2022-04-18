@@ -10,11 +10,10 @@
     </ul>
   <% end %>
  
-  <%= form_with scope: :ordern, url:orderns_path, local: true do |f| %> 
+  <%= form_with(model: [@productn, @ordern]) do |f| %>
     
     <div class="field form-group">
-      <%= f.label :Select_your_Product %>
-      <%= f.select :productn_id, Productn.all.map { |t| [t.name, t.id]}%>
+      <%= f.hidden_field :productn_id, value: @productn.id %>
     </div><br>
 
     <div class="field form-group">
@@ -27,5 +26,5 @@
       
   <% end %>
 
-  <%= link_to "Return to Orders Listing", orderns_path, class:"btn btn-info" %>
+  
 <div>

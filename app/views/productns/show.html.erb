@@ -1,12 +1,42 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4"><%= @productn.name %></h1>
-    <h2 class="lead"><%= @productn.rate %></h2>
+    <h2 class="lead">Price : <%= @productn.rate %></h2>
 
     <hr class="my-4">
 
     <%= link_to "Edit", edit_productn_path(@productn), class:"btn btn-primary" %> <br> <br>
     <%= button_to "Delete", productn_path(@productn), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
     <%= link_to "Return to Product Listing", productns_path, class:"btn btn-info" %>
+    <%= link_to "Create new Order of this Product", new_productn_ordern_path(@productn) %>
   </div>
+
+  <% if @productn.orderns.any? %>
+
+    <br>
+    <h1>Orders List</h1>
+
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @productn.orderns.each do |order|%>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.quantity%></td>
+        <td><%= link_to "Show", productn_ordern_path(@productn, order) %></td>
+        <td><%= link_to "Edit", edit_productn_ordern_path(@productn, order) %></td>
+        <td><%= link_to "Delete", productn_ordern_path(@productn, order), method: :delete, data: {confirm: "Are you Sure?"} %></td>
+
+
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+  <% end %>
 </div>

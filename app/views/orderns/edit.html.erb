@@ -10,12 +10,12 @@
     </ul>
   <% end %>
  
-  <%= form_with(model: @productn,local: true) do |f| %>
+  <%= form_with(model: [@productn, @ordern]) do |f| %>
     
     <div class="field form-group">
-      <%= f.select :productn_id, Productn.all.map { |t| [t.name, t.id]}%>
+      <%= f.hidden_field :productn_id, value: @productn.id %>
     </div><br>
-
+    
     <div class="field form-group">
       <%= f.number_field :quantity, class:"form-control", placeholder:"Enter Quantity"%>
     </div><br>
@@ -26,5 +26,3 @@
       
   <% end %>
 
-  <%= link_to "Return to Orders Listing", orderns_path, class:"btn btn-info" %>
-<div>

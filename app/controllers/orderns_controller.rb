@@ -7,24 +7,28 @@ class OrdernsController < ApplicationController
 	end
 	
 	def new
+		@productn = Productn.find(params[:productn_id])
 		@ordern = Ordern.new
 	end
 	
 	def create
+		@productn = Productn.find(params[:productn_id])
 		@ordern = Ordern.create(ordern_params)
     if @ordern.save
-			redirect_to ordern_path(@ordern)
+			redirect_to productn_path(@productn)
 		else
 			render "new"
 		end
 	end
 	
 	def edit
+		@productn = Productn.find(params[:productn_id])
 	end
 	
 	def update
+		@productn = Productn.find(params[:productn_id])
 		if @ordern.update(ordern_params)
-			redirect_to ordern_path(@ordern)
+			redirect_to productn_path(@productn)
 		else
 			render "edit"
 		end
@@ -34,8 +38,9 @@ class OrdernsController < ApplicationController
 	end
 	
 	def destroy
+		@productn = Productn.find(params[:productn_id])
 		if @ordern.destroy
-			redirect_to orderns_path
+			redirect_to productn_path(@productn)
 		end
 	end
 

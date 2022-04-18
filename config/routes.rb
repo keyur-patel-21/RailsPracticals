@@ -42,7 +42,15 @@ Rails.application.routes.draw do
   resources :categories
 
   # Rails_Routing
-  resources :productns
-  resources :orderns    
-  resources :customerns
+
+  get "index", to: "orderns#index"
+  resources :productns do
+    resources :orderns 
+  end  
+  
+  namespace :business do
+    get "preview", to: "customerns#preview"
+    get 'search', to:"customerns#search"
+    resources :customerns, only: [:index, :new, :create, :edit]
+  end
 end

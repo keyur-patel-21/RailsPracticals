@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Customers List</h1>
+
+  <%= form_tag business_search_path, :method => 'get' do %>
+    <p>
+      <%= text_field :search %>
+      <%= submit_tag "Apply" %>
+    </p>
+  <% end %>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customerns.each do |customer|%>
+      <tr>
+        <td><%= customer.name%></td>
+        <td><%= link_to "Edit", edit_business_customern_path(customer), class:"btn btn-secondary"%></td>
+        <td><%= link_to "Preview", business_preview_path(customer), class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new customer", new_business_customern_path, class:"btn btn-success" %></p>
+</div>
+  

@@ -10,7 +10,7 @@
     </ul>
   <% end %>
 
-  <%= form_with(model: @customern, local: true) do |f| %> 
+  <%= form_with(model: [:business, @customern], local: true) do |f| %> 
     
     <div class="field form-group">
       <%= f.text_field :name, class:"form-control", placeholder:"Enter Name"%>
@@ -22,5 +22,5 @@
       
   <% end %>
 
-  <%= link_to "Return to Faculties Listing", customerns_path, class:"btn btn-info" %>
+  <%= link_to "Return to Customer Listing", business_customerns_path, class:"btn btn-info" %>
 <div>

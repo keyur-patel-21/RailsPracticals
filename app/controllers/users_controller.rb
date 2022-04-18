@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     @events = @user.events
   end
 
+  # enroll method for enrolling in event
   def enroll
     @user = User.find_by(id: session[:user_id])
     if session[:user_id] && params[:event_id]
@@ -51,6 +52,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # unenroll method for event unenrolling
   def unenroll
     enrollment = Enrollment.find_by("user_id=? and event_id=?",current_user,params[:event_id])
     enrollment.destroy

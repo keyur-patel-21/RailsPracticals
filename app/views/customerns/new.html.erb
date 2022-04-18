@@ -1,15 +1,6 @@
 <div class="container">
   <h1>Create a new Customer</h1>
 
-  <% if @customern.errors.any? %>
-    <h2> The following error(s) prevented the Book from being saved </h2>
-    <ul>
-      <% @customern.errors.full_messages.each do |msg| %>
-        <li> <%= msg %> </li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <%= form_with scope: :customern, url:customerns_path, local: true do |f| %> 
 
     <div class="field form-group">

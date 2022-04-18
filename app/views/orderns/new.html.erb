@@ -13,6 +13,7 @@
   <%= form_with scope: :ordern, url:orderns_path, local: true do |f| %> 
     
     <div class="field form-group">
+      <%= f.label :Select_your_Product %>
       <%= f.select :productn_id, Productn.all.map { |t| [t.name, t.id]}%>
     </div><br>
 

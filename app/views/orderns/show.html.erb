@@ -1,12 +1,12 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-4"><%= @order.productn.name %></h1>
-    <h2 class="lead"><%= @ordern.rate %></h2>
+    <h1 class="display-4"><%= @ordern.productn.name %></h1>
+    <h2 class="lead"><%= @ordern.quantity %></h2>
 
     <hr class="my-4">
 
-    <%= link_to "Edit", edit_productn_ordern_path(@ordern), class:"btn btn-primary" %> <br> <br>
-    <%= button_to "Delete", productn_path(@productn), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
-    <%= link_to "Return to Order Listing", productn_ordern_path, class:"btn btn-info" %>
+    <%= link_to "Edit", edit_ordern_path(@ordern), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", ordern_path(@ordern), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Order Listing", orderns_path, class:"btn btn-info" %>
   </div>
 </div>

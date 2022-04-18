@@ -42,9 +42,7 @@ Rails.application.routes.draw do
   resources :categories
 
   # Rails_Routing
-  resources :productns do
-    resources :orderns
-  end    
-
+  resources :productns
+  resources :orderns    
   resources :customerns
 end

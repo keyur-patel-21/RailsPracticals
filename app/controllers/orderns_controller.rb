@@ -13,7 +13,7 @@ class OrdernsController < ApplicationController
 	def create
 		@ordern = Ordern.create(ordern_params)
     if @ordern.save
-			redirect_to productn_path(@ordern)
+			redirect_to ordern_path(@ordern)
 		else
 			render "new"
 		end
@@ -24,7 +24,7 @@ class OrdernsController < ApplicationController
 	
 	def update
 		if @ordern.update(ordern_params)
-			redirect_to productn_path(@ordern)
+			redirect_to ordern_path(@ordern)
 		else
 			render "edit"
 		end
@@ -46,6 +46,6 @@ class OrdernsController < ApplicationController
 	end
 
 	def ordern_params
-		params.require(:ordern).permit(:product_id, :quantity)
+		params.require(:ordern).permit(:productn_id, :quantity)
 	end
 end

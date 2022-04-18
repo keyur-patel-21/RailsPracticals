@@ -15,6 +15,9 @@
       <tr>
         <td><%= order.productn.name %></td>
         <td><%= order.quantity%></td>
+        <td><%= link_to "Show", ordern_path(order)%></td>
+        <td><%= link_to "Edit", edit_ordern_path(order)%></td>
+        <td><%= button_to "Delete", ordern_path(order), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
       </tr>
       <% end%>
     </tbody>

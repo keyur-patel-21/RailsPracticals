@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-1"><%= @event.name %></h1>
+    <h1 class="display-4"><%= @event.category.name %></h1>
+    <h2 class="lead"> <%= @event.description %></h2>
+    <p class="lead"> Date : <%= @event.event_date %> </p>
+
+    <hr class="my-4">
+
+    <% if logged_in? && @event.user == current_user %>
+      <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary" %> <br> <br>
+      <%= button_to "Delete", event_path(@event), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% end %>
+    <%= link_to "Return to event Listing", events_path, class:"btn btn-info" %>
+  </div><br>
+
+  <%# shows comments for event %>
+  <% if @event.comments.any? %>
+    <div class="card-footer text-muted">
+      <small> 
+        <h6> Comments </h6>
+        <% @event.comments.each do |cmt| %>
+          <div>
+            <strong class="fs-7"><%= cmt.user.username %></strong>
+            <span><%= cmt.content %></span>
+            <span>
+
+              <%= link_to "LIKE", comments_like_path(:event_id => @event.id, :comment_id => cmt.id), class:"btn btn-info" %>
+              <%= cmt.likes %> likes
+            </span>
+          </div>   
+        <% end %>  
+      </small>
+    </div>
+  <% end %>
+
+  <%# option to add comment if user is logged in %>
+  <% if logged_in? %>
+    <div class="card-footer text-muted">
+      <%= form_with(url: comments_path, method: "post") do |f| %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit "Add Comment", class:"btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

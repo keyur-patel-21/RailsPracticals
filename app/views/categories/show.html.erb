@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @category.name %></h1>
+    <hr class="my-4">
+  
+    <%= link_to "Edit", edit_category_path(@category), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", category_path(@category), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Category Listing", categories_path, class:"btn btn-info" %>
+  </div>
+</div>

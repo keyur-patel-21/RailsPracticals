@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Login into Your Account</h1>
+
+  <%= form_with scope: :session, url:login_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.password_field :password, class:"form-control", placeholder:"Enter Password"%>
+    </div><br>
+    
+    <div class="action">
+      <%= f.submit "Log In", class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Event Listing", events_path, class:"btn btn-info" %>
+<div>

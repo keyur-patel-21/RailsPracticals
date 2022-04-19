@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2022_04_14_112533) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "user_address"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
 ActiveRecord::Schema.define(version: 2022_04_07_081424) do
+
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -31,6 +40,21 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.datetime "updated_at", null: false
     t.integer "author_id"
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "likes"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -54,6 +78,14 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -61,6 +93,8 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
   end
 
   create_table "faculties", force: :cascade do |t|

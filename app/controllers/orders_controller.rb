@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       if !(params[:product_name].blank?)
         @orders = Product.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
       end
-      rescue Exception
+      rescue Exception  
         flash[:notice] = "Record not found!"
         redirect_to orders_path
       end

@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Create a new event</h1>
+
+  <%# prints error messages %>
+  <% if @event.errors.any? %>
+    <h2> The following error(s) prevented the Event from being saved </h2>
+    <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%# form for creating event %>
+  <%= form_with scope: :event, url:events_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.text_field :name, class:"form-control", placeholder:"Enter Event Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :description, class:"form-control", placeholder:"Enter Event Description"%>
+    </div><br>
+ 
+    <div class="field form-group">
+      <%= f.label :Category_of_Event%>
+      <%= f.select :category_id, Category.all.map { |t| [t.name, t.id]}%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.label :Date_of_Event%>
+      <%= f.date_select :event_date, :start_year=>1900, class:"form-control", placeholder:"Date of Birth"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Events Listing", events_path, class:"btn btn-info" %>
+<div>

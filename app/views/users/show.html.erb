@@ -1,0 +1,45 @@
+<h1 class="text-center mt-4"><%= @user.username %>'s Profile</h1>
+<% if logged_in? && @user == current_user %>
+    <%= link_to "Log Out", logout_path, class:"btn btn-danger", method: :delete %>
+<% end %>
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <div class="card p-3 py-4 shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
+          <div class="text-center mt-3"> 
+            <h5 class="mt-2 mb-0"><%= @user.username %></h5> <span><%= @user.email %></span>
+              <div class="px-4 mt-1">
+                <%= @user.address.user_address %> 
+              </div>
+                    
+              <% if logged_in? && @user == current_user %>
+                <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary" %> </div>
+                <%= link_to "Delete Profile", user_path(current_user), class:"btn btn-danger", method: :delete, data: { Confirm: "Are you Sure?"} %> </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button for enrolling event-->
+<h1 class="text-center mt-4">Events Enrolled by <%= @user.username %></h1>
+<div class="container">
+  <% if logged_in? && @user == current_user %>
+    <% current_user.enrollments.each do |enroll| %>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"><%= enroll.event.name %> </h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= enroll.event.description %></p>
+        </div>
+      </div><br>
+    <% end %>
+  <% end %>
+</div>
+
+
+  

@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Create a new Product</h1>
 
+  <%# print errors %>
   <% if @productn.errors.any? %>
     <h2> The following error(s) prevented the Book from being saved </h2>
     <ul>
@@ -10,6 +11,7 @@
     </ul>
   <% end %>
  
+  <%# form for creating new order %>
   <%= form_with scope: :productn, url:productns_path, local: true do |f| %> 
     
     <div class="field form-group">

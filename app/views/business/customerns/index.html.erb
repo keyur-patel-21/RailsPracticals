@@ -1,13 +1,17 @@
 <div class="container">
   <h1>Customers List</h1>
 
+  <%# form for searching customer %>
   <%= form_tag business_search_path, :method => 'get' do %>
-    <p>
-      <%= text_field :search %>
-      <%= submit_tag "Apply" %>
-    </p>
+    <div class="input-group">
+      <%= search_field_tag :search, params[:search], placeholder: "Search for Customer", class: "form-control" %>
+      <div class="input-group-btn">
+      <%= button_tag "Search", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
+      </div>
+    </div>
   <% end %>
 
+  <%# List all customers %>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -18,8 +22,9 @@
       <% @customerns.each do |customer|%>
       <tr>
         <td><%= customer.name%></td>
-        <td><%= link_to "Edit", edit_business_customern_path(customer), class:"btn btn-secondary"%></td>
-        <td><%= link_to "Preview", business_preview_path(customer), class:"btn btn-secondary"%></td>
+        <td><%= link_to "Edit", edit_business_customern_path(customer), class:"btn btn-primary"%></td>
+        <td><%= link_to "Preview", business_path(customer), class:"btn btn-secondary"%></td>
+        <td><%= button_to "Delete", delete_customer_business_customern_path(customer), class:"btn btn-danger", method: :delete%></td>
       </tr>
       <% end%>
     </tbody>

@@ -49,8 +49,13 @@ Rails.application.routes.draw do
   end  
   
   namespace :business do
-    get "preview", to: "customerns#preview"
+    get "/:id/preview", to: "customerns#preview"
     get 'search', to:"customerns#search"
-    resources :customerns, only: [:index, :new, :create, :edit]
+    resources :customerns, only: [:index, :new, :create, :edit, :update] do
+      member do
+        match "delete_customer", via:[:delete]
+      end
+    end
   end
 end
+

@@ -26,19 +26,27 @@ class Business::CustomernsController < ApplicationController
 		end
 	end
 
+	# method to preview the customer
 	def preview
 		@customern = Customern.find(params[:id])
 	end
 
+	# methof to delete cusotmer
 	def delete_customer 
 		@customern = Customern.find(params[:id])
     if @customern.destroy
-      redirect_to customers_path
+      redirect_to business_customerns_path
     end
 	end
 
+	# method to search for customer in list
 	def search
-		@customern=Customern.where('name?',params[:search]) if params[:search]
+		if params[:search].blank?
+			redirect_to business_customerns_path
+		else
+			@parameter = params[:search.downcase]
+			@customerns = Customern.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+		end
 	end
 
 	private

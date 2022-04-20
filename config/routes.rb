@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :myusers
+  
   root "pages#home"
   # root "productns#index"
   get "pages/about"
@@ -61,6 +61,10 @@ Rails.application.routes.draw do
   end
 
   # layouts and rendering
+
+  get 'home', to:'myuser#home'
+
+  devise_for :myusers
   resources :myproducts
   resources :myorders
 end

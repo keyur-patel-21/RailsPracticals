@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Create a new Product</h1>
+
+  <%# print errors %>
+  <% if @myproduct.errors.any? %>
+    <h2> The following error(s) prevented the Book from being saved </h2>
+    <ul>
+      <% @myproduct.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+ 
+  <%# form for creating new order %>
+  <%= form_with scope: :myproduct, url:myproducts_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.text_field :name, class:"form-control", placeholder:"Enter Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.number_field :rate, class:"form-control", placeholder:"Enter Price"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Products Listing", myproducts_path, class:"btn btn-info" %>
+<div>

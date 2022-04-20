@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @myorder.myproduct.name %></h1>
+    <h2 class="lead"><%= @myorder.quanity %></h2>
+
+    <hr class="my-4">
+
+    <%= link_to "Edit", edit_myorder_path(@myorder), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", myorder_path(@myorder), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Order Listing", myorders_path, class:"btn btn-info" %>
+  </div>
+</div>

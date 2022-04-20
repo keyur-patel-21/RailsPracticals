@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Create a new Order</h1>
+
+  <%# print errors %>
+  <% if @myorder.errors.any? %>
+    <h2> The following error(s) prevented the Book from being saved </h2>
+    <ul>
+      <% @myorder.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%# form for creating new order %>
+  <%= form_with scope: :myorder, url:myorders_path, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.label :Select_Product %>
+      <%= f.select :myproduct_id, Myproduct.all.map { |t| [t.name, t.id]}%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.number_field :quanity, class:"form-control", placeholder:"Enter Quantity"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+<div>

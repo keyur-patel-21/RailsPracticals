@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_19_113658) do
+ActiveRecord::Schema.define(version: 2022_04_20_051517) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
@@ -114,6 +114,20 @@ ActiveRecord::Schema.define(version: 2022_04_19_113658) do
     t.integer "imageable_id"
     t.string "imageable_type"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "myorders", force: :cascade do |t|
+    t.string "quanity"
+    t.integer "myproduct_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "myproducts", force: :cascade do |t|
+    t.string "name"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "myusers", force: :cascade do |t|

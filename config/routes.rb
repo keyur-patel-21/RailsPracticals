@@ -59,5 +59,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # layouts and rendering
+  resources :myproducts
+  resources :myorders
 end
 

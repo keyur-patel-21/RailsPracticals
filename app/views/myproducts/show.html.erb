@@ -6,7 +6,9 @@
 
     <hr class="my-4">
 
-    <%= link_to "Edit", edit_myproduct_path(@myproduct), class:"btn btn-primary" %> <br> <br>
-    <%= button_to "Delete", myproduct_path(@myproduct), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% if current_myuser.role == "admin" %>
+      <%= link_to "Edit", edit_myproduct_path(@myproduct), class:"btn btn-primary" %> <br> <br>
+      <%= button_to "Delete", myproduct_path(@myproduct), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% end %>
     <%= link_to "Return to Product Listing", myproducts_path, class:"btn btn-info" %>
   </div>

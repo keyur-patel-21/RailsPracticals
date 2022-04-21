@@ -67,5 +67,8 @@ Rails.application.routes.draw do
   devise_for :myusers
   resources :myproducts
   resources :myorders
+
+  # Action View Form Helpers
+  resources :employeens
 end
 

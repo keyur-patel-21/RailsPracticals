@@ -19,14 +19,19 @@
         <td><%= order.myproduct.name %></td>
         <td><%= order.quanity%></td>
         <td><%= link_to "Show", myorder_path(order), class:"btn btn-info" %></td>
-        <td><%= link_to "Edit", edit_myorder_path(order), class:"btn btn-secondary" %></td>
-        <td><%= button_to "Delete", myorder_path(order), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td>
+
+        <% if current_myuser.role == "admin" %>
+          <td><%= link_to "Edit", edit_myorder_path(order), class:"btn btn-secondary" %></td>
+          <td><%= button_to "Delete", myorder_path(order), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td>
+        <% end %>
       </tr>
       <% end%>
     </tbody>
   </table>
 
-  <p><%= link_to "Place new Order", new_myorder_path, class:"btn btn-primary" %></p>
+  <% if current_myuser.role == "admin" %>
+    <p><%= link_to "Place new Order", new_myorder_path, class:"btn btn-primary" %></p>
+  <% end %>
 </div>
 
 

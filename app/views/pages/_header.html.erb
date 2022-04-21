@@ -83,12 +83,12 @@
             <% if myuser_signed_in? %>
               <li><%= link_to "Sign Out", destroy_myuser_session_path, method: :delete,  class:"dropdown-item" %></li>
               <li><%= link_to "Edit Profile", edit_myuser_registration_path, class:"dropdown-item" %></li>
+              <li><%= link_to "Products", myproducts_path, class:"dropdown-item"%></li>            
+              <li><%= link_to "Orders", myorders_path, class:"dropdown-item"%></li> 
             <% else %>
               <li><%= link_to "Sign Up", new_myuser_registration_path, class:"dropdown-item" %></li>
               <li><%= link_to "Sign In", new_myuser_session_path, class:"dropdown-item"%></li>
-            <% end %>
-            <li><%= link_to "Products", myproducts_path, class:"dropdown-item"%></li>            
-            <li><%= link_to "Orders", myorders_path, class:"dropdown-item"%></li>            
+            <% end %>           
           </ul>
         </li> 
       </ul>

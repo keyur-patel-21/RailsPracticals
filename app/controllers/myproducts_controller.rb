@@ -1,6 +1,8 @@
 class MyproductsController < ApplicationController
 
   before_action :set_myproduct, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_admin, except: [:show, :index]
   
   def index
     @myproducts = Myproduct.all
@@ -47,5 +49,11 @@ class MyproductsController < ApplicationController
 
   def myproduct_params
     params.require(:myproduct).permit(:name, :rate)
+  end
+
+  def require_admin
+    if current_user.role != "admin"
+      flash[:alert] = "You must be logged in to perform that action"
+    end
   end
 end

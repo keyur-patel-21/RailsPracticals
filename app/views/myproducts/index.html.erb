@@ -17,13 +17,18 @@
         <td><%= product.name %></td>
         <td><%= product.rate%></td>
         <td><%= link_to "Show", myproduct_path(product), class:"btn btn-primary"%></td>
-        <td><%= link_to "Edit", edit_myproduct_path(product), class:"btn btn-secondary"%></td>
-        <td><%= button_to "Delete", myproduct_path(product), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td> 
+        
+        <% if current_myuser.role == "admin" %>
+          <td><%= link_to "Edit", edit_myproduct_path(product), class:"btn btn-secondary"%></td>
+          <td><%= button_to "Delete", myproduct_path(product), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td> 
+        <% end %>
       </tr>
       <% end%>
     </tbody>
   </table>
 
-  <p><%= link_to "Add new Product", new_myproduct_path, class:"btn btn-primary" %></p>
+  <% if current_myuser.role == "admin" %>
+    <p><%= link_to "Add new Product", new_myproduct_path, class:"btn btn-primary" %></p>
+  <% end %>
 </div>
   

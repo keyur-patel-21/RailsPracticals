@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Create a new Customer</h1>
+
+  <%# form for creating new customer %>
+  <%= form_with scope: :customern, url:business_customerns_path, local: true do |f| %> 
+
+    <div class="field form-group">
+      <%= f.text_field :name, class:"form-control", placeholder:"Enter Name"%>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Csutomer Listing", business_customerns_path, class:"btn btn-info" %>
+<div>

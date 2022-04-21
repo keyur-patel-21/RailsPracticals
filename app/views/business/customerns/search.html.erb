@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table table-hover">
+
+    <!--search result table-->
+    <thead>
+      <tr>
+        <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @customerns.each do |customer|%>
+      <tr>
+        <td><%= customer.name%></td>
+        <td><%= link_to "Edit", edit_business_customern_path(customer), class:"btn btn-secondary"%></td>
+        <td><%= link_to "Preview", business_path(customer), class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @ordern.productn.name %></h1>
+    <h2 class="lead"><%= @ordern.quantity %></h2>
+
+    <hr class="my-4">
+
+    <%= link_to "Edit", edit_productn_ordern_path(@ordern.productn, @ordern), class:"btn btn-primary" %> <br> <br>
+  
+  </div>
+</div>

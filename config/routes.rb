@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  # root "pages#home"
+  root "productns#index"
   get "pages/about"
 
   resources :books
@@ -40,6 +41,22 @@ Rails.application.routes.draw do
   resources :events
   resources :users, except: [:new]
   resources :categories
- 
+
+  # Rails_Routing
+
+  get "index", to: "orderns#index"
+  resources :productns do
+    resources :orderns 
+  end  
   
+  namespace :business do
+    get "/:id/preview", to: "customerns#preview"
+    get 'search', to:"customerns#search"
+    resources :customerns, only: [:index, :new, :create, :edit, :update] do
+      member do
+        match "delete_customer", via:[:delete]
+      end
+    end
+  end
 end
+

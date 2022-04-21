@@ -1,0 +1,26 @@
+<div class="container">
+<br>
+
+  <%# list all orders %>
+  <h1>Orders List</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orderns.each do |order|%>
+      <tr>
+        <td><%= order.id%></td>
+        <td><%= order.productn.name %></td>
+        <td><%= order.quantity%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+</div>
+  

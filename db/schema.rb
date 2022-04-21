@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_112533) do
+ActiveRecord::Schema.define(version: 2022_04_15_101745) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
     t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
-
-ActiveRecord::Schema.define(version: 2022_04_07_081424) do
-
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -57,6 +54,12 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
+  create_table "customerns", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
@@ -77,7 +80,6 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "enrollments", force: :cascade do |t|
     t.integer "user_id"
@@ -114,6 +116,13 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
+  create_table "orderns", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "productn_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_price"
@@ -124,6 +133,13 @@ ActiveRecord::Schema.define(version: 2022_04_07_081424) do
     t.integer "customer_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
+  end
+
+  create_table "productns", force: :cascade do |t|
+    t.string "name"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @usern.name %></h1>
+    <p class="lead"><%= @usern.email %></p>
+    <hr class="my-4">
+    <p><%= image_tag(@usern.picture_url.to_s) %></p>
+      
+    <p class="lead">
+      <%= link_to "edit", edit_usern_path(@usern), class:"btn btn-info" %>
+      <%= link_to "Return to User Listing Page", userns_path, class:"btn btn-primary" %>
+    </p>
+  </div>
+</div>

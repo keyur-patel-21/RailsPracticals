@@ -13,7 +13,7 @@ class UsernsController < ApplicationController
   def create
     @usern = Usern.create(usern_params)
     if @usern.save
-      UsernMailer.with(user: @usern).welcome_email.deliver_later
+      UsernMailer.with(usern: @usern).welcome_email.deliver_now
       redirect_to userns_path
     else
       render "new"
@@ -36,7 +36,7 @@ class UsernsController < ApplicationController
   
   def destroy
     if @usern.destroy
-      redirect_to usern_path
+      redirect_to userns_path
     end
   end
 

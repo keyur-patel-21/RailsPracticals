@@ -13,7 +13,8 @@
  
   <%# form for creating new order %>
   <%= form_with scope: :employeen, url:employeens_path, local: true do |f| %> 
-    
+
+
     <div class="field form-group">
       <%= f.text_field :employee_name, class:"form-control", placeholder:"Enter Name"%>
     </div><br>
@@ -53,6 +54,20 @@
       <%= f.check_box :hobbies, {multiple: true}, "Painting", false%>
       <%= f.label "Painting" %>
     </div><br>
+
+    <%= f.fields_for :eaddresses do |af| %>
+        <div class="field form-group">
+        <%= af.text_field :house_name, class:"form-control", placeholder:"Enter House Name"%>
+      </div><br>
+
+      <div class="field form-group">
+        <%= af.text_field :street_name, class:"form-control", placeholder:"Enter street name"%>
+      </div><br>
+
+      <div class="field form-group">
+        <%= af.text_field :road, class:"form-control", placeholder:"Enter Road"%>
+      </div><br>
+    <% end %>
 
     <div class="field form-group">
       <%= f.text_area :address, class:"form-control", placeholder:"Enter Address"%>

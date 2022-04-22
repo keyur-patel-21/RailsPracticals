@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   resources :myorders
 
   # Action View Form Helpers
+  get 'searched', to:"employeens#searched"
   resources :employeens
 end
 

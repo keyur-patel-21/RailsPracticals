@@ -1,35 +1,22 @@
 <div class="container">
-<br>
-
-  <%# form for searching Employee %>
-  <%= form_tag searched_path, :method => 'get' do %>
-    <div class="input-group">
-      <%= search_field_tag :search, params[:search], placeholder: "Search for Employee", class: "form-control" %>
-      <div class="input-group-btn">
-      <%= button_tag "Search", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
-      </div>
-    </div>
-  <% end %>
-
-  <%# list all products %>
-  <h1>Employees List</h1>
-
   <table class="table table-hover">
+
+    <!--search result table-->
     <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Gender</th>
         <th>Hobbies</th>
-        <th>Addresss</th>
+        <th>Address</th>
         <th>Mobile Number</th>
-        <th>Birthdate</th>
-      </tr>
+        <th>Birth Date</th>
+        </tr>
     </thead>
     <tbody>
       <% @employeens.each do |e|%>
       <tr>
-        <td><%= e.employee_name %></td>
+        <td><%= e.employee_name%></td>
         <td><%= e.email%></td>
         <td><%= e.gender%></td>
         <td><%= e.hobbies%></td>
@@ -43,7 +30,4 @@
       <% end%>
     </tbody>
   </table>
-
-    <p><%= link_to "Add new Employee", new_employeen_path, class:"btn btn-primary" %></p>
 </div>
-  

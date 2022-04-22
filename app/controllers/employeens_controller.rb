@@ -8,6 +8,7 @@ class EmployeensController < ApplicationController
   
   def new
     @employeen = Employeen.new
+    2.times { @employeen.eaddresses.build }
   end
   
   def create
@@ -39,6 +40,16 @@ class EmployeensController < ApplicationController
     end
   end
 
+  # method to search for Employee in list
+  def searched
+    if params[:search].blank?
+      redirect_to employeens_path
+    else
+      @parameter = params[:search.downcase]
+      @employeens = Employeen.all.where("lower(employee_name) LIKE :search", search: "%#{@parameter}%")
+    end
+  end
+
   private
 
   def set_employeen
@@ -46,6 +57,6 @@ class EmployeensController < ApplicationController
   end
 
   def employeen_params
-    params.require(:employeen).permit(:employee_name, :email, :password, :gender, :hobbies, :address, :mobile_number, :birth_date, :document)
+    params.require(:employeen).permit(:employee_name, :email, :password, :gender, {hobbies:[]}, :address, :mobile_number, :birth_date, :document, eaddresses_attributes: [:house_name, :street_name, :road])
   end
 end

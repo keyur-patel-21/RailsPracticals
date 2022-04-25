@@ -24,7 +24,9 @@ class UsernsController < ApplicationController
   end
   
   def update
+    old_email = @usern.email
     if @usern.update(usern_params)
+      UsernMailer.with(usern: @usern).email_alter.deliver_now if old_email != @usern.email
       redirect_to usern_path(@usern)
     else
       render "edit"

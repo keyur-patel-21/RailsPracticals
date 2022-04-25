@@ -71,5 +71,12 @@ Rails.application.routes.draw do
   # Action View Form Helpers
   get 'searched', to:"employeens#searched"
   resources :employeens
+
+  # API-only application
+  namespace :api do
+    namespace :v1 do
+      resources :articles
+    end
+  end
 end
 

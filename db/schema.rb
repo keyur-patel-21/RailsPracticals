@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_051656) do
+ActiveRecord::Schema.define(version: 2022_04_25_101647) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
     t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors", force: :cascade do |t|
@@ -209,6 +217,14 @@ ActiveRecord::Schema.define(version: 2022_04_22_051656) do
     t.date "s_dob"
     t.string "s_department"
     t.string "s_terms"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userns", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

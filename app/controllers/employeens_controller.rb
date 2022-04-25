@@ -8,7 +8,7 @@ class EmployeensController < ApplicationController
   
   def new
     @employeen = Employeen.new
-    2.times { @employeen.eaddresses.build }
+    1.times { @employeen.eaddresses.build }
   end
   
   def create

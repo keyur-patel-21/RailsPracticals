@@ -41,17 +41,27 @@
     <%# Hobbies %>
     <div class="field form-group">
     
-      <%= f.check_box :hobbies, {multiple: true}, "Gardening", false%>
-      <%= f.label "Gardening" %>
+      <strong>Hobbies : </strong>
 
-      <%= f.check_box :hobbies, {multiple: true}, "Cooking", false%>
-      <%= f.label "Cooking" %>
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Gardening", false%>
+        <%= f.label "Gardening" %>
+      </div>
 
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Cooking", false%>
+        <%= f.label "Cooking" %>
+      </div>
+
+      <div>
       <%= f.check_box :hobbies, {multiple: true}, "Writing", false%>
       <%= f.label "Writing" %>
+      </div>
 
+      <div>
       <%= f.check_box :hobbies, {multiple: true}, "Painting", false%>
       <%= f.label "Painting" %>
+      </div>
     </div><br>
 
     <div class="field form-group">

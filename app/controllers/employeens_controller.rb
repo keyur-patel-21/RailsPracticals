@@ -36,7 +36,7 @@ class EmployeensController < ApplicationController
   
   def destroy
     if @employeen.destroy
-      redirect_to employeen_path
+      redirect_to employeens_path
     end
   end
 

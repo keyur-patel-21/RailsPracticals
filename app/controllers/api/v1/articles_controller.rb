@@ -1,6 +1,6 @@
-fclass Api::V1::ArticlesController < ApplicationController 
+class Api::V1::ArticlesController < ApplicationController 
 
-before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
   
   def index
     @articles = Article.all
@@ -52,4 +52,6 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
   def article_params
     params.require(:article).permit(:title, :body, :release_date)
   end
+
 end
+

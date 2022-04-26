@@ -75,7 +75,9 @@ Rails.application.routes.draw do
   # API-only application
   namespace :api do
     namespace :v1 do
-      resources :articles
+      resources :articles do
+        resources :acomments
+      end
     end
   end
 end

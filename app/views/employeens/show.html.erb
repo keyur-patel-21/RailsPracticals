@@ -8,6 +8,12 @@
     <p>City : <%= @employeen.address %></p>
     <p>Contact :<%= @employeen.mobile_number %></p>
     <p>Date of Birth :<%= @employeen.birth_date %></p>
+
+    <% @employeen.eaddresses.each do |addr| %>
+      <p> HouseName: <%= addr.house_name %></p> 
+      <p> Street: <%= addr.street_name %></p>
+      <p> Road: <%= addr.road%> </p>
+    <% end %>
   
     <p class="lead">
       <%= link_to "edit", edit_employeen_path(@employeen), class:"btn btn-info" %>

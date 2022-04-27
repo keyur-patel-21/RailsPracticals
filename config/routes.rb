@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   # API-only application
   namespace :api do
     namespace :v1 do
+      get "searched", to: 'articles#searched'
       resources :articles do
         resources :acomments
       end

@@ -1,18 +1,13 @@
-class Api::V1::ArticlesController < ApplicationController 
+class Api::V1::AcommentsController < ApplicationController 
 
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_acomment, only: [:show, :edit, :update, :destroy]
   
   def index
     @acomments = Acomment.all
     render json: @acomments
   end
 
-  def new
-    @acomment = Acomment.new
-    render json: @acomment
-  end
-
-  def create
+   def create
     @acomment = Acomment.create(acomment_params)
     if @acomment.save
       render json: @acomment

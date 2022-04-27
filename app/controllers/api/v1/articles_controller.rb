@@ -7,13 +7,8 @@ class Api::V1::ArticlesController < ApplicationController
     render json: @articles
   end
 
-  def new
-    @article = Article.new
-    render json: @article
-  end
-
   def create
-    @article = Article.create(article_params)
+    @article = Article.new(article_params)
     if @article.save
       render json: @article
     else
@@ -45,7 +40,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   private
 
-  def set_artilce
+  def set_article
     @article = Article.find(params[:id])
   end
 
@@ -54,4 +49,3 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
 end
-

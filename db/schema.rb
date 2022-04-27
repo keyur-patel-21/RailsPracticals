@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_15_101745) do
+ActiveRecord::Schema.define(version: 2022_04_20_051517) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
@@ -114,6 +114,33 @@ ActiveRecord::Schema.define(version: 2022_04_15_101745) do
     t.integer "imageable_id"
     t.string "imageable_type"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "myorders", force: :cascade do |t|
+    t.string "quanity"
+    t.integer "myproduct_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "myproducts", force: :cascade do |t|
+    t.string "name"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "myusers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_myusers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_myusers_on_reset_password_token", unique: true
   end
 
   create_table "orderns", force: :cascade do |t|

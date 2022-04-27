@@ -1,0 +1,14 @@
+<div class="container">
+
+  <% if current_myuser %>
+    <div>
+      <p style="color:green;text-align:center;"> Welcome: <%= current_myuser.email %>!<br/>
+      <%= link_to "Click here for Products", myproducts_path %> 
+      </p>
+    </div>
+  <% else %>
+    <p> You are not signed in. </p>
+    <%= link_to "Sign Up!", new_myuser_registration_path %> <br/>
+    <%= link_to "login", new_myuser_session_path %>
+  <% end %>
+</div>

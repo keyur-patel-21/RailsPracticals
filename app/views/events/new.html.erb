@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Create a new event</h1>
 
+  <%# prints error messages %>
   <% if @event.errors.any? %>
     <h2> The following error(s) prevented the Event from being saved </h2>
     <ul>
@@ -10,6 +11,7 @@
     </ul>
   <% end %>
 
+  <%# form for creating event %>
   <%= form_with scope: :event, url:events_path, local: true do |f| %> 
     
     <div class="field form-group">

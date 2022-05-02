@@ -12,9 +12,9 @@
       <%= button_to "Delete", event_path(@event), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
     <% end %>
     <%= link_to "Return to event Listing", events_path, class:"btn btn-info" %>
-  </div>
+  </div><br>
 
-  <br>
+  <%# shows comments for event %>
   <% if @event.comments.any? %>
     <div class="card-footer text-muted">
       <small> 
@@ -34,6 +34,7 @@
     </div>
   <% end %>
 
+  <%# option to add comment if user is logged in %>
   <% if logged_in? %>
     <div class="card-footer text-muted">
       <%= form_with(url: comments_path, method: "post") do |f| %>

@@ -1,0 +1,86 @@
+<div class="container">
+  <h1>Create a new Employee</h1>
+
+  <%# print errors %>
+  <% if @employeen.errors.any? %>
+    <h2> The following error(s) prevented the Employee from being saved </h2>
+    <ul>
+      <% @employeen.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+ 
+  <%# form for creating new order %>
+  <%= form_with(model: @employeen,local: true) do |f| %>
+  
+    <div class="field form-group">
+      <%= f.text_field :employee_name, class:"form-control", placeholder:"Enter Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.password_field :password, class:"form-control", placeholder:"Enter Password"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.date_field :birth_date, class:"form-control", placeholder:"Enter Password"%>
+    </div><br>
+
+    <%# Gender %>
+    <div class="field form-group">
+      <%= f.radio_button :gender, "Male"%>
+      <%= f.label :Male, "Male" %>
+      <%= f.radio_button :gender, "Female"%>
+      <%= f.label :Female, "Female" %>
+    </div><br>
+
+    <%# Hobbies %>
+    <div class="field form-group">
+    
+      <strong>Hobbies : </strong>
+
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Gardening", false%>
+        <%= f.label "Gardening" %>
+      </div>
+
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Cooking", false%>
+        <%= f.label "Cooking" %>
+      </div>
+
+      <div>
+      <%= f.check_box :hobbies, {multiple: true}, "Writing", false%>
+      <%= f.label "Writing" %>
+      </div>
+
+      <div>
+      <%= f.check_box :hobbies, {multiple: true}, "Painting", false%>
+      <%= f.label "Painting" %>
+      </div>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_area :address, class:"form-control", placeholder:"Enter Address"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.number_field :mobile_number, class:"form-control", placeholder:"Enter Mobile Number"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.file_field :document %>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Employee Listing", employeens_path, class:"btn btn-info" %>
+<div>

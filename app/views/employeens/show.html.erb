@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @employeen.employee_name %></h1>
+    <p class="lead"><%= @employeen.email %></p>
+    <hr class="my-4">
+    <p>Gender :<%= @employeen.gender %></p>
+    <p>Hobbies :<%= @employeen.hobbies %></p>
+    <p>City : <%= @employeen.address %></p>
+    <p>Contact :<%= @employeen.mobile_number %></p>
+    <p>Date of Birth :<%= @employeen.birth_date %></p>
+
+    <% @employeen.eaddresses.each do |addr| %>
+      <p> HouseName: <%= addr.house_name %></p> 
+      <p> Street: <%= addr.street_name %></p>
+      <p> Road: <%= addr.road%> </p>
+    <% end %>
+  
+    <p class="lead">
+      <%= link_to "edit", edit_employeen_path(@employeen), class:"btn btn-info" %>
+      <%= link_to "Return to Employee Listing Page", employeens_path, class:"btn btn-primary" %>
+
+    </p>
+  </div>
+</div>

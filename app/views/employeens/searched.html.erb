@@ -1,0 +1,33 @@
+<div class="container">
+  <table class="table table-hover">
+
+    <!--search result table-->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Hobbies</th>
+        <th>Address</th>
+        <th>Mobile Number</th>
+        <th>Birth Date</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @employeens.each do |e|%>
+      <tr>
+        <td><%= e.employee_name%></td>
+        <td><%= e.email%></td>
+        <td><%= e.gender%></td>
+        <td><%= e.hobbies%></td>
+        <td><%= e.address%></td>
+        <td><%= e.mobile_number%></td>
+        <td><%= e.birth_date%></td>
+        <td><%= link_to "Show", employeen_path(e), class:"btn btn-primary"%></td>
+        <td><%= link_to "Edit", edit_employeen_path(e), class:"btn btn-secondary"%></td>
+        <td><%= button_to "Delete", employeen_path(e), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%></td> 
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+</div>

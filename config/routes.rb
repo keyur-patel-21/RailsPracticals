@@ -67,5 +67,9 @@ Rails.application.routes.draw do
   devise_for :myusers
   resources :myproducts
   resources :myorders
+
+  # Action View Form Helpers
+  get 'searched', to:"employeens#searched"
+  resources :employeens
 end
 

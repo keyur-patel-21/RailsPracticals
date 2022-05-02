@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "searched", to: 'articles#searched'
+      get "comment_search", to: 'acomments#comment_search'
       resources :articles do
         resources :acomments
       end

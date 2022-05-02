@@ -38,6 +38,16 @@ class Api::V1::AcommentsController < ApplicationController
     end
   end
 
+  def comment_search
+    @parameter = params[:comment.downcase]
+    @comment = Acomment.where("lower(comment) LIKE :comment", comment: "%#{@parameter}%")
+    if @comment != []
+      render json: @comment
+    else
+      render json: "record doesn't exist."
+    end
+  end
+
   private
 
   def set_acomment

@@ -46,6 +46,6 @@ class TestProductsController < ApplicationController
   end
 
   def set_product
-    @peoduct = TestProduct.find(params[:id])
+    @product = TestProduct.find(params[:id])
   end
 end

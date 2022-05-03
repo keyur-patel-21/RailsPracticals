@@ -12,7 +12,7 @@
   <% end %>
  
   <%# form for creating new order %>
-  <%= form_with scope: :employeen, url:employeens_path, local: true do |f| %> 
+  <%= form_with model: @employeen do |f| %> 
 
 
     <div class="field form-group">
@@ -33,6 +33,7 @@
 
     <%# Gender %>
     <div class="field form-group">
+      <strong>Gender : </strong>
       <%= f.radio_button :gender, "Male"%>
       <%= f.label :Male, "Male" %>
       <%= f.radio_button :gender, "Female"%>
@@ -42,19 +43,30 @@
     <%# Hobbies %>
     <div class="field form-group">
     
-      <%= f.check_box :hobbies, {multiple: true}, "Gardening", false%>
-      <%= f.label "Gardening" %>
+    <strong>Hobbies : </strong>
 
-      <%= f.check_box :hobbies, {multiple: true}, "Cooking", false%>
-      <%= f.label "Cooking" %>
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Gardening", false%>
+        <%= f.label "Gardening" %>
+      </div>
 
+      <div>
+        <%= f.check_box :hobbies, {multiple: true}, "Cooking", false%>
+        <%= f.label "Cooking" %>
+      </div>
+
+      <div>
       <%= f.check_box :hobbies, {multiple: true}, "Writing", false%>
       <%= f.label "Writing" %>
+      </div>
 
+      <div>
       <%= f.check_box :hobbies, {multiple: true}, "Painting", false%>
       <%= f.label "Painting" %>
+      </div>
     </div><br>
 
+    <%# Nested Form for Address %>
     <%= f.fields_for :eaddresses do |af| %>
         <div class="field form-group">
         <%= af.text_field :house_name, class:"form-control", placeholder:"Enter House Name"%>

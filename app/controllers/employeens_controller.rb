@@ -8,7 +8,7 @@ class EmployeensController < ApplicationController
   
   def new
     @employeen = Employeen.new
-    2.times { @employeen.eaddresses.build }
+    1.times { @employeen.eaddresses.build }
   end
   
   def create
@@ -36,7 +36,7 @@ class EmployeensController < ApplicationController
   
   def destroy
     if @employeen.destroy
-      redirect_to employeen_path
+      redirect_to employeens_path
     end
   end
 

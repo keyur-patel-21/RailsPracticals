@@ -17,7 +17,8 @@ class ApplicationController < ActionController::API
       redirect_to login_path
     end
   end
- protected
+  
+ private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:role])

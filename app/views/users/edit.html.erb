@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Edit User Profile</h1>
 
+  <%# prints error messages %>
   <% if @user.errors.any? %>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -9,6 +10,7 @@
     </ul>
   <% end %>
 
+  <%# for for editing user %>
   <%= form_with(model: @user,local: true) do |f| %> 
     
     <div class="field form-group">

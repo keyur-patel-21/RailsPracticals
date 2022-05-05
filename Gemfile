@@ -27,14 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-<<<<<<< HEAD
 gem 'rack-cors'
 gem 'active_model_serializers'
 
-=======
 gem 'carrierwave'
 gem "mini_magick"
->>>>>>> e4c4304e80e8581689cb17eb9a6fe96d2b6737ee
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

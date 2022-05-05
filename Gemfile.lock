@@ -111,14 +111,11 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-<<<<<<< HEAD
     jsonapi-renderer (0.2.2)
-=======
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
->>>>>>> e4c4304e80e8581689cb17eb9a6fe96d2b6737ee
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)

@@ -12,7 +12,7 @@
   <% end %>
  
   <%# form for creating new order %>
-  <%= form_with scope: :employeen, url:employeens_path, local: true do |f| %> 
+  <%= form_with model: @employeen do |f| %> 
 
 
     <div class="field form-group">
@@ -66,6 +66,7 @@
       </div>
     </div><br>
 
+    <%# Nested Form for Address %>
     <%= f.fields_for :eaddresses do |af| %>
         <div class="field form-group">
         <%= af.text_field :house_name, class:"form-control", placeholder:"Enter House Name"%>

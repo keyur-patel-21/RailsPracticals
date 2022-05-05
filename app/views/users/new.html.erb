@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Sign up to Create user</h1>
 
+  <!--prints error messages -->
   <% if @user.errors.any? %>
-
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li> <%= msg %> </li>
@@ -10,6 +10,7 @@
     </ul>
   <% end %>
 
+  <!--form for creating new user -->
   <%= form_with(model: @user) do |f| %> 
     
     <div class="field form-group">

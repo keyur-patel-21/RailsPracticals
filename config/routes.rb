@@ -71,5 +71,8 @@ Rails.application.routes.draw do
   # Action View Form Helpers
   get 'searched', to:"employeens#searched"
   resources :employeens
+
+  # Action mailer basics
+  resources :userns
 end
 

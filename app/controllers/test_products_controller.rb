@@ -1,6 +1,7 @@
 class TestProductsController < ApplicationController
   
   before_action :set_product, only: [:show, :edit, :update, :destroy] 
+  before_action :authenticate_myuser!
 
   def index
     @products = TestProduct.all
@@ -42,7 +43,7 @@ class TestProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:test_product).permit(:product_name, :price, :description)
+    params.require(:test_product).permit(:product_name, :price, :description, :myuser_id)
   end
 
   def set_product

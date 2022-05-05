@@ -21,6 +21,7 @@
     <p>
       <%= f.text_area :description, class:"form-control", placeholder:"Enter Product Description"%>
     </p>
+      <%= f.hidden_field :myuser_id, value: current_myuser.id %>
 
     <p>
       <%= f.submit %>

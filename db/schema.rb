@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2022_05_02_111721) do
     t.integer "article_id"
     t.index ["article_id"], name: "index_acomments_on_article_id"
   end
-ActiveRecord::Schema.define(version: 2022_04_22_080702) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
@@ -235,6 +234,7 @@ ActiveRecord::Schema.define(version: 2022_04_22_080702) do
     t.string "product_name"
     t.integer "price"
     t.string "description"
+    t.integer "myuser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

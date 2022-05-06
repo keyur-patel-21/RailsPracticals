@@ -39,9 +39,9 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def searched
-    @parameter = params[:search.downcase]
-    @article = Article.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
-    if @article
+    @parameter = params[:title.downcase]
+    @article = Article.where("lower(title) LIKE :title", title: "%#{@parameter}%")
+    if @article != []
       render json: @article
     else
       render json: "record doesn't exist."

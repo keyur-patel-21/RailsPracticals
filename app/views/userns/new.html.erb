@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Create a new Employee</h1>
+
+  <%# print errors %>
+  <% if @usern.errors.any? %>
+    <h2> The following error(s) prevented the Employee from being saved </h2>
+    <ul>
+      <% @usern.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+ 
+  <%# form for creating new user %>
+  <%= form_with scope: :usern, url:userns_path, local: true do |f| %> 
+  
+    <div class="field form-group">
+      <%= f.text_field :name, class:"form-control", placeholder:"Enter Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.email_field :email, class:"form-control", placeholder:"Enter Email"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.file_field :picture %>
+    </div><br>
+
+    <div class="action">
+      <%= f.submit class:"btn btn-primary" %>
+    </div><br>
+      
+  <% end %>
+
+  <%= link_to "Return to Employee Listing", userns_path, class:"btn btn-info" %>
+<div>

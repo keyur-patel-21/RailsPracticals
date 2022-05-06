@@ -14,6 +14,7 @@
     </p>
   <% end %>
 
+  <%# events card %>
   <% @events.each do |event|%>
     <div class="row justify-content-md-center">
       <div class="col-8 mt-4">
@@ -33,6 +34,7 @@
               <%= link_to "Delete", event_path(event), class:"btn btn-danger"%>
             <% end %>
 
+            <%# button to enroll and unenroll %>
             <% if logged_in? %>
               <% if Enrollment.where("user_id=? and event_id=?", current_user, event).blank? %>
                 <td><%= button_to "Enroll", users_enroll_path(id: session[:user_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
@@ -50,7 +52,3 @@
     </div>  
   <% end %>
 </div>
-
-
-
- 

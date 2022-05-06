@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_26_093717) do
-
-  create_table "acomments", force: :cascade do |t|
-    t.string "comment"
-    t.date "date_of_comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "article_id"
-    t.index ["article_id"], name: "index_acomments_on_article_id"
-  end
+ActiveRecord::Schema.define(version: 2022_04_22_080702) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"

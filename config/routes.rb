@@ -81,5 +81,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  # Action mailer basics
+  resources :userns
 end
 

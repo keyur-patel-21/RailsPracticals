@@ -8,21 +8,37 @@ class TestProductTest < ActiveSupport::TestCase
     @product = TestProduct.new(product_name: "abc", price: "600", description: "abcdefgh", myuser_id: @user.id)
   end
 
-  test "attributes should be valid" do
+  test "product should be valid" do
     assert @product.valid?
   end
 
-  test "should not save without name" do
+  test "name should be present" do
     @product.product_name = ""
     assert_not @product.valid?
   end
+
+  test "name should be unique" do
+    @product.save
+    @product2 = TestProduct.new(product_name: "abc", price: "600", description: "abcdefgh", myuser_id: @user.id)
+    assert_not @product2.valid?
+  end
+
+  test "name should not be too long" do
+    @product.product_name = "a" * 26
+    assert_not @product.valid?
+  end
+
+  test "name should not be too short" do
+    @product.product_name = "aa"
+    assert_not @product.valid?
+  end
   
-  test "should not save without price" do
+  test "price should be present" do
     @product.price = ""
     assert_not @product.valid?
   end
 
-  test "should not save without myuser_id" do
+  test "myuser_id should be present" do
     @product.myuser_id = ""
     assert_not @product.valid?
   end

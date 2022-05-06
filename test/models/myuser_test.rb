@@ -10,17 +10,17 @@ class MyuserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
 
-  test "should not save without email" do
+  test "email should be present" do
     @user.email = ""
     assert_not @user.valid?
   end
   
-  test "should not save without password" do
+  test "password should be present" do
     @user.password = ""
     assert_not @user.valid?
   end
 
-  test "should not save without role" do
+  test "role should be present" do
     @user.role = ""
     assert_not @user.valid?
   end

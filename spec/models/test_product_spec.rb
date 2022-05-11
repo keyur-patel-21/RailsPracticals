@@ -5,7 +5,7 @@ RSpec.describe TestProduct, type: :model do
   before do
     @user = Myuser.new(email: "keyur@gmail.com",role: "admin",password: "password")
     @user.save
-    @product = TestProducts.new(product_name: "productxyz", price: "600", description: "adhdahah", myuser_id: @user.id)
+    @product = TestProduct.new(product_name: "productxyz", price: "600", description: "adhdahah", myuser_id: @user.id)
     @product.save
   end
   

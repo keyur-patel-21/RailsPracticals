@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2022_04_22_080702) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

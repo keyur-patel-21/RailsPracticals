@@ -72,6 +72,16 @@ Rails.application.routes.draw do
   get 'searched', to:"employeens#searched"
   resources :employeens
 
+  # API-only application
+  namespace :api do
+    namespace :v1 do
+      get "searched", to: 'articles#searched'
+      get "comment_search", to: 'acomments#comment_search'
+      resources :articles do
+        resources :acomments
+      end
+    end
+  end
   # Action mailer basics
   resources :userns
 end

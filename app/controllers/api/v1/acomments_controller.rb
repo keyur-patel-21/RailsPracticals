@@ -8,8 +8,7 @@ class Api::V1::AcommentsController < ApplicationController
   end
 
    def create
-    @acomment = Acomment.create(acomment_params)
-    if @acomment.save
+    if @acomment = Acomment.create(acomment_params)
       render json: @acomment
     else
       render json: "Something went terrible wrong"
@@ -22,7 +21,7 @@ class Api::V1::AcommentsController < ApplicationController
 
   def update
     if @acomment.update(acomment_params)
-      render json: "Successfully updated"
+      render json: @acomment
     else
       render json: "Somthing went Wrong"
     end
@@ -35,11 +34,13 @@ class Api::V1::AcommentsController < ApplicationController
   def destroy
     if @acomment.destroy
       render json: "Successfully deleted"
+    else
+      render json: "Somthing went Wrong"
     end
   end
 
   def comment_search
-    @parameter = params[:comment.downcase]
+    @parameter = params[:comment]
     @comment = Acomment.where("lower(comment) LIKE :comment", comment: "%#{@parameter}%")
     if @comment != []
       render json: @comment

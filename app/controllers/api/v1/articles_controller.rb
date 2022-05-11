@@ -8,8 +8,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    if @article.save
+    if @article = Article.create(article_params)
       render json: @article
     else
       render json: "Something went terribl wrong"
@@ -22,7 +21,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      render json: "Successfully updated"
+      render json: @article
     else
       render json: "Somthing went Wrong"
     end
@@ -35,11 +34,13 @@ class Api::V1::ArticlesController < ApplicationController
   def destroy
     if @article.destroy
       render json: "Successfully deleted"
+    else
+      render json: "Something went wrong"
     end
   end
 
   def searched
-    @parameter = params[:title.downcase]
+    @parameter = params[:title]
     @article = Article.where("lower(title) LIKE :title", title: "%#{@parameter}%")
     if @article != []
       render json: @article

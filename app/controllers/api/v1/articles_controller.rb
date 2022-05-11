@@ -8,7 +8,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    if @article = Article.new(article_params)
+    if @article = Article.create(article_params)
       render json: @article
     else
       render json: "Something went terribl wrong"

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @user.first_name + " " + @user.last_name %></h1>
+    <h2 class="lead"><%= @user.email %></h2>
+    <p class="lead">Subscribed:<%= @user.subscription %></p>
+    <p class="lead">Subscription Mail:<%= @user.subscription_email %></p>
+    <hr class="my-4">
+  
+    <%= link_to "Edit", edit_juser_path(@user), class:"btn btn-primary" %> <br> <br>
+    <%= button_to "Delete", juser_path(@user), class:"btn btn-secondary" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <%= link_to "Return to Users Listing", jusers_path, class:"btn btn-info" %>
+  </div>
+</div>

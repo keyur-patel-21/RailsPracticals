@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>All Users</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subscription</th>
+        <th>Subscription Eamil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user|%>
+      <tr>
+        <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.subscription %></td>
+        <td><%= user.subscription_email %></td>
+        <td><%= link_to "Show", juser_path(user)%></td>
+        <td><%= link_to "Edit", edit_juser_path(user)%></td>
+        <td><%= button_to "Delete", juser_path(user), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
+      </tr>
+      <% end%>
+    </tbody>
+  </table>
+
+  <p><%= link_to "Add new User", new_juser_path, class:"btn btn-primary" %></p>
+</div>
+  

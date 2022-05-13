@@ -84,5 +84,8 @@ Rails.application.routes.draw do
   end
   # Action mailer basics
   resources :userns
+
+  # Working With javascript in rails
+  resources :jusers
 end
 

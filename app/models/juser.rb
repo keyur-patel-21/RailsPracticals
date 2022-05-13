@@ -1,0 +1,2 @@
+class Juser < ApplicationRecord
+end

@@ -1,6 +1,6 @@
 class JusersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy] 
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :profile] 
 
   def index
     @users = Juser.all
@@ -40,6 +40,10 @@ class JusersController < ApplicationController
     end
   end
 
+  # method for profile page
+  def profile
+  end
+  
   private
 
   def user_params

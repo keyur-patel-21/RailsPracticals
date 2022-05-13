@@ -19,6 +19,7 @@
         <td><%= user.subscription_email %></td>
         <td><%= link_to "Show", juser_path(user)%></td>
         <td><%= link_to "Edit", edit_juser_path(user)%></td>
+        <td><%= link_to "Profile", profile_juser_path(user)%></td>
         <td><%= button_to "Delete", juser_path(user), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-secondary"%></td>
       </tr>
       <% end%>

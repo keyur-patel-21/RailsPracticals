@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Edit the User</h1>
+
+  <% if @user.errors.any? %>
+    <h2> The following error(s) prevented the user from being saved </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: @user, local: true do |f| %> 
+    
+    <div class="field form-group">
+      <%= f.text_field :first_name, class:"form-control", placeholder:"Enter First Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.text_field :last_name, class:"form-control", placeholder:"Enter Last Name"%>
+    </div><br>
+
+    <div class="field form-group">
+      <%= f.email_field :email, class:"form-control", placeholder:"Enter Email", oninput: "showPassword()"%>
+    </div><br>
+
+    <div class="field form-group" id="password_field", style="display: none">
+      <%= f.password_field :password, class:"form-control", placeholder:"Enter password"%>
+    </div><br>
+
+    <div>
+      <%= f.check_box :subscription, onclick: "showSubEmail(this)" %>
+      <%= f.label "I would like to receive pramotion mails" %>
+    </div>
+
+    <div class="field form-group" id="SubEmail", style="display: none">
+      <%= f.email_field :subscription_email, class:"form-control", placeholder:"Enter your email"%>
+    </div><br>
+
+    <p>
+      <%= f.submit "Update User", data: { disable_with: "Saving..." } %>
+    </p>
+      
+  <% end %>
+
+  <%= link_to "Return to Users Listing", jusers_path, class:"btn btn-info" %>
+
+  <script>
+    function showPassword() {
+      var password = document.getElementById("password_field");
+      if (password.style.display === "none"){
+        password.style.display = "block";
+      } 
+    }
+    
+    function showSubEmail(subCheck) {
+      var subemail = document.getElementById("SubEmail");
+      if (subCheck.checked){
+        subemail.style.display = "block"
+      } else {
+        subemail.style.display = "none"
+      }
+    }
+  </script>
+<div>

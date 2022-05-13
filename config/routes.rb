@@ -86,6 +86,11 @@ Rails.application.routes.draw do
   resources :userns
 
   # Working With javascript in rails
-  resources :jusers
+  resources :jusers do
+    member do
+      get "profile", to: 'jusers#profile'
+    end
+  end
+  
 end
 

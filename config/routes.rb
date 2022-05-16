@@ -89,6 +89,8 @@ Rails.application.routes.draw do
   resources :jusers do
     member do
       get "profile", to: 'jusers#profile'
+      get "changepassword", to: 'jusers#changepassword'
+      patch "changepassword_update"
     end
   end
   

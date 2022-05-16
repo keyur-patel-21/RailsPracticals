@@ -5,6 +5,7 @@ class CreateJusers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :email
       t.string :password
+      t.string :password_confirmation
       t.boolean :subscription
       t.string :subscription_email
 

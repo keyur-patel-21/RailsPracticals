@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 2022_05_12_105700) do
     t.string "last_name"
     t.string "email"
     t.string "password"
+    t.string "password_confirmation"
     t.boolean "subscription"
     t.string "subscription_email"
     t.datetime "created_at", null: false

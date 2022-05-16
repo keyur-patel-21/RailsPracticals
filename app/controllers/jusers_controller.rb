@@ -1,6 +1,6 @@
 class JusersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :profile] 
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :profile, :changepassword] 
 
   def index
     @users = Juser.all
@@ -24,10 +24,15 @@ class JusersController < ApplicationController
   end
   
   def update
-    if @user.update(user_params)
-      redirect_to juser_path
-    else
-      render "edit"
+    @user = Juser.find(params[:id])
+    binding.pry
+    respond_to do |format|
+      if @user.update(user_params)
+        flash[:notice] = "User Updated Successfully"
+      else
+        flash[:errors] = @user.errors.full_messages
+      end
+      format.js
     end
   end
   
@@ -42,6 +47,22 @@ class JusersController < ApplicationController
 
   # method for profile page
   def profile
+  end
+
+  # method for change password
+  def changepassword
+  end
+
+  def changepassword_update
+    @user = Juser.find(params[:id])
+    binding.pry
+    if @user.update_attribute(:password, params[:new_password])
+      flash[:notice] = "Password updated successfully"
+      redirect_to juser_path(@user)
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to changepassword_juser_path(@user)
+    end
   end
   
   private

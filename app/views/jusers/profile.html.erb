@@ -10,7 +10,7 @@
     </ul>
   <% end %>
 
-  <%= form_with model: @user, local: true do |f| %> 
+  <%= form_with model: @user, local: false do |f| %> 
     
     <div class="field form-group">
       <%= f.text_field :first_name, class:"form-control", placeholder:"Enter First Name"%>
@@ -44,7 +44,13 @@
   <% end %>
 
   <%= link_to "Return to Users Listing", jusers_path, class:"btn btn-info" %>
+  <%= link_to "Forgot Password", changepassword_juser_path, class:"btn btn-info" %>
 
+  <!--User details that are being fetched by calling AJAX-->
+  <div id="details" class="ms-3">
+  </div>
+
+  <!--javascript-->
   <script>
     function showPassword() {
       var password = document.getElementById("password_field");

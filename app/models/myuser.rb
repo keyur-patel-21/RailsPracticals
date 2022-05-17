@@ -4,5 +4,7 @@ class Myuser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :test_products, dependent: :destroy
+
   validates :role, presence: true
 end

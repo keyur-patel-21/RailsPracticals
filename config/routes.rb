@@ -82,6 +82,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Testing Rails Application
+  resources :test_products
   # Action mailer basics
   resources :userns
 end

@@ -11,7 +11,6 @@ class JusersController < ApplicationController
   end
   
   def create
-    # binding.pry
     @user = Juser.new(user_params)
     if @user.save
       redirect_to jusers_path
@@ -25,7 +24,6 @@ class JusersController < ApplicationController
   
   def update
     @user = Juser.find(params[:id])
-    binding.pry
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = "User Updated Successfully"
@@ -55,7 +53,6 @@ class JusersController < ApplicationController
 
   def changepassword_update
     @user = Juser.find(params[:id])
-    binding.pry
     if @user.update_attribute(:password, params[:new_password])
       flash[:notice] = "Password updated successfully"
       redirect_to juser_path(@user)

@@ -96,6 +96,4 @@ Rails.application.routes.draw do
       patch "changepassword_update"
     end
   end
-  
 end
-

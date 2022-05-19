@@ -87,5 +87,13 @@ Rails.application.routes.draw do
   resources :test_products
   # Action mailer basics
   resources :userns
-end
 
+  # Working With javascript in rails
+  resources :jusers do
+    member do
+      get "profile", to: 'jusers#profile'
+      get "changepassword", to: 'jusers#changepassword'
+      patch "changepassword_update"
+    end
+  end
+end
